@@ -1,7 +1,26 @@
-import 'package:flame/game.dart';
+import 'package:flame/flame.dart';
+
 import 'package:flutter/material.dart';
 
+import 'screens/splash_screen.dart';
+//import 'package:flutter/services.dart';
+
 void main() {
-  final game = FlameGame();
-  runApp(GameWidget(game: game));
+  WidgetsFlutterBinding.ensureInitialized();
+  Flame.device.fullScreen();
+  Flame.device.setLandscape();
+
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: MySplashScreen(),
+    );
+  }
 }
