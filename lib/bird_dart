@@ -1,0 +1,33 @@
+import 'package:flame/components.dart';
+import 'package:flame/sprite.dart';
+import 'package:flame/flame.dart';
+import 'package:flutter/material.dart';
+
+
+class Bird extends SpriteAnimationComponent {
+  Bird() : super(size: Vector2(50, 50));
+
+  @override
+  Future<void> onLoad() async {
+    final spriteSheetImage = await Flame.images.load('bird.png');
+
+    const frameSize = Vector2(34, 24);
+    final spriteSheet = SpriteSheet(
+      image: spriteSheetImage,
+      srcSize: frameSize,
+    );
+
+    animation = spriteSheet.createAnimation(
+      row: 0,
+      stepTime: 0.1,
+      to: 3,
+    );
+
+    anchor = Anchor.center;
+  }
+
+  void fly() {
+    position.y -= 50;
+  }
+}
+
