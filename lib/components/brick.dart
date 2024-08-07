@@ -18,6 +18,7 @@ enum BrickType {
   final double friction;
 
   const BrickType({required this.density, required this.friction});
+
   static BrickType get randomType => values[Random().nextInt(values.length)];
 }
 
@@ -34,6 +35,7 @@ enum BrickSize {
   final ui.Size size;
 
   const BrickSize(this.size);
+
   static BrickSize get randomSize => values[Random().nextInt(values.length)];
 }
 
@@ -244,7 +246,7 @@ Map<BrickDamage, String> brickFileNames(BrickType type, BrickSize size) {
   };
 }
 
-class Brick extends BodyComponent {
+class Brick extends BodyComponent with ContactCallbacks {
   Brick({
     required this.type,
     required this.size,
@@ -273,12 +275,29 @@ class Brick extends BodyComponent {
 
   late final SpriteComponent _spriteComponent;
 
+  @override
+  set onBeginContact(
+      void Function(Object other, Contact contact)? onBeginContact) {
+    print("object");
+    print(onBeginContact);
+    super.onBeginContact = onBeginContact;
+  }
+
+  @override
+  set onEndContact(
+      void Function(Object other, Contact contact)? _onEndContact) {
+    print("object");
+    super.onEndContact = _onEndContact;
+  }
+
   final BrickType type;
   final BrickSize size;
   final Map<BrickDamage, Sprite> _sprites;
 
   BrickDamage _damage;
+
   BrickDamage get damage => _damage;
+
   set damage(BrickDamage value) {
     _damage = value;
     _spriteComponent.sprite = _sprites[value];

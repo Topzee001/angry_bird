@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 
+import 'package:angry_bird/components/score_display.dart';
 import 'package:flame/components.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
 import 'package:flame_kenney_xml/flame_kenney_xml.dart';
@@ -9,12 +10,23 @@ import 'package:flutter/material.dart';
 import 'brick.dart';
 import 'enemy.dart';
 import 'ground.dart';
-import 'player.dart';
+import 'bird.dart';
 
-class MyGame extends Forge2DGame {
+class AngryBirds extends Forge2DGame {
   late final XmlSpriteSheet aliens;
   late final XmlSpriteSheet elements;
   late final XmlSpriteSheet tiles;
+
+  // late Bird currentBird;
+  // late AngryBirdsCamera gameCamera;
+  // late ScoreDisplay scoreDisplay;
+  // late RestartButton restartButton;
+  // late SoundManager soundManager;
+
+  AngryBirds() : super(gravity: Vector2(0, 40.0));
+
+  late ScoreDisplay scoreDisplay;
+
   @override
   FutureOr<void> onLoad() async {
     await super.onLoad();
@@ -42,6 +54,9 @@ class MyGame extends Forge2DGame {
       ..sprite = await loadSprite('background.png')
       ..size = size);
 
+    scoreDisplay = ScoreDisplay();
+    add(scoreDisplay);
+
     unawaited(addBricks().then((_) => addEnemies()));
     await addGround();
     await addPlayer();
@@ -60,6 +75,7 @@ class MyGame extends Forge2DGame {
   }
 
   final _random = Random();
+
   Future<void> addBricks() async {
     for (var i = 0; i < 6; i++) {
       final type = BrickType.randomType;
@@ -68,7 +84,7 @@ class MyGame extends Forge2DGame {
         Brick(
           type: type,
           size: size,
-          damage: BrickDamage.some,
+          damage: BrickDamage.lots,
           position: Vector2(
               camera.visibleWorldRect.right / 1.6 +
                   (_random.nextDouble() * 5 - 2.5),
@@ -87,16 +103,21 @@ class MyGame extends Forge2DGame {
 
   Future<void> addPlayer() async {
     final sprite = await loadSprite('Red.png');
-    return world
-        .add(Player(Vector2(camera.visibleWorldRect.left * 2 / 3, 0), sprite));
+    return world.add(
+      Bird(
+        Vector2(camera.visibleWorldRect.left * 2 / 5, 0),
+        sprite,
+      ),
+    );
   }
 
   //Function to add the player back
   @override
   void update(double dt) {
     super.update(dt);
+
     if (isMounted &&
-        world.children.whereType<Player>().isEmpty &&
+        world.children.whereType<Bird>().isEmpty &&
         world.children.whereType<Enemy>().isNotEmpty) {
       addPlayer();
     }
