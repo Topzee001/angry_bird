@@ -10,7 +10,7 @@ class GameScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GameWidget(game: MyGame()),
+      body: GameWidget(game: AngryBirds()),
     );
   }
 }
