@@ -32,7 +32,6 @@ class _MySplashScreenState extends State<MySplashScreen> {
             fit: BoxFit.cover,
           ),
         ),
-        // child: Image.asset(),
       ),
     );
   }

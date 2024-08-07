@@ -39,7 +39,7 @@ class MyGame extends Forge2DGame {
     tiles = spriteSheets[2];
 
     add(SpriteComponent()
-      ..sprite = await loadSprite('background.png',)
+      ..sprite = await loadSprite('background.png')
       ..size = size);
 
     unawaited(addBricks().then((_) => addEnemies()));
@@ -54,7 +54,7 @@ class MyGame extends Forge2DGame {
           x += groundSize)
         Ground(
           Vector2(x, (camera.visibleWorldRect.height - groundSize) / 2),
-          // tiles.getSprite('grass.png'),
+          tiles.getSprite('grass.png'),
         ),
     ]);
   }
@@ -127,16 +127,14 @@ class MyGame extends Forge2DGame {
   Future<void> addEnemies() async {
     final sprite = await loadSprite('Pig_29.webp');
     await Future<void>.delayed(const Duration(seconds: 1));
-    for (var i = 0; i < 1; i++) {
+    for (var i = 0; i < 2; i++) {
       await world.add(
         Enemy(
             Vector2(
                 camera.visibleWorldRect.right / 1.6 +
                     (_random.nextDouble() * 5 - 3.5),
                 (_random.nextDouble() * 3)),
-            sprite
-            
-            ),
+            sprite),
       );
       await Future<void>.delayed(const Duration(seconds: 1));
     }
