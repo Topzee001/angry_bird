@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'dart:ui' as ui;
 
+import 'package:angry_bird/components/bird.dart';
 import 'package:angry_bird/components/body_component_with_user_data.dart';
 import 'package:flame/components.dart';
 import 'package:flame/extensions.dart';
@@ -248,13 +249,16 @@ Map<BrickDamage, String> brickFileNames(BrickType type, BrickSize size) {
 }
 
 class Brick extends BodyComponentWithUserData with ContactCallbacks {
-  Brick({
-    required this.type,
-    required this.size,
-    required BrickDamage damage,
-    required Vector2 position,
-    required Map<BrickDamage, Sprite> sprites,
-  })  : _damage = damage,
+  void Function(int points)? onContactCallback;
+
+  Brick(
+      {required this.type,
+      required this.size,
+      required BrickDamage damage,
+      required Vector2 position,
+      required Map<BrickDamage, Sprite> sprites,
+      this.onContactCallback})
+      : _damage = damage,
         _sprites = sprites,
         super(
             renderBody: false,
@@ -287,6 +291,24 @@ class Brick extends BodyComponentWithUserData with ContactCallbacks {
   set damage(BrickDamage value) {
     _damage = value;
     _spriteComponent.sprite = _sprites[value];
+  }
+
+  @override
+  void beginContact(Object other, Contact contact) {
+    if (other is Bird) {
+      int interceptVelocity =
+          (contact.bodyA.linearVelocity - contact.bodyB.linearVelocity)
+              .length
+              .abs()
+              .toInt();
+      print(type);
+
+      print(interceptVelocity);
+      // if (interceptVelocity > 35) {
+      //   removeFromParent();
+      // }
+    }
+    super.beginContact(other, contact);
   }
 
   @override
