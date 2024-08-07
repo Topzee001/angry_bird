@@ -151,11 +151,11 @@ class AngryBirds extends Forge2DGame {
     for (var i = 0; i < 2; i++) {
       await world.add(
         Enemy(
-            Vector2(
+            position: Vector2(
                 camera.visibleWorldRect.right / 1.6 +
                     (_random.nextDouble() * 5 - 3.5),
                 (_random.nextDouble() * 3)),
-            sprite),
+            sprite: sprite),
       );
       await Future<void>.delayed(const Duration(seconds: 1));
     }

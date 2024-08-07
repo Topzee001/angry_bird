@@ -6,7 +6,12 @@ import 'body_component_with_user_data.dart';
 const enemySize = 5.0;
 
 class Enemy extends BodyComponentWithUserData with ContactCallbacks {
-  Enemy(Vector2 position, Sprite sprite)
+  Function? onContactCallBack;
+
+  Enemy(
+      {required Vector2 position,
+      required Sprite sprite,
+      this.onContactCallBack})
       : super(
           renderBody: false,
           bodyDef: BodyDef()
@@ -30,13 +35,16 @@ class Enemy extends BodyComponentWithUserData with ContactCallbacks {
 
   @override
   void beginContact(Object other, Contact contact) {
-    var interceptVelocity =
+    int interceptVelocity =
         (contact.bodyA.linearVelocity - contact.bodyB.linearVelocity)
             .length
-            .abs();
+            .abs()
+            .toInt();
     if (interceptVelocity > 35) {
       removeFromParent();
     }
+
+    // onContactCallBack!(int interceptVelocity);
 
     super.beginContact(other, contact);
   }
