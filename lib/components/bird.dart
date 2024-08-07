@@ -1,5 +1,4 @@
-import 'dart:ui';
-
+import 'package:angry_bird/components/body_component_with_user_data.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
 import 'package:flame/events.dart';
@@ -8,7 +7,8 @@ import 'package:flutter/material.dart';
 
 const playerSize = 5.0;
 
-class Bird extends BodyComponent with DragCallbacks, ContactCallbacks {
+class Bird extends BodyComponentWithUserData
+    with DragCallbacks, ContactCallbacks {
   Bird(Vector2 position, Sprite sprite)
       : _sprite = sprite,
         super(
@@ -16,8 +16,8 @@ class Bird extends BodyComponent with DragCallbacks, ContactCallbacks {
           bodyDef: BodyDef()
             ..position = position
             ..type = BodyType.static
-            ..angularDamping = 0.1
-            ..linearDamping = 0.1,
+            ..angularDamping = 0.2
+            ..linearDamping = 0.2,
           fixtureDefs: [
             FixtureDef(CircleShape()..radius = playerSize / 2)
               ..restitution = 0.4
@@ -30,7 +30,7 @@ class Bird extends BodyComponent with DragCallbacks, ContactCallbacks {
 
   @override
   void beginContact(Object other, Contact contact) {
-    print("object");
+    print(other);
     super.beginContact(other, contact);
   }
 

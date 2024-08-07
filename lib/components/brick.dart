@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'dart:ui' as ui;
 
+import 'package:angry_bird/components/body_component_with_user_data.dart';
 import 'package:flame/components.dart';
 import 'package:flame/extensions.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
@@ -246,7 +247,7 @@ Map<BrickDamage, String> brickFileNames(BrickType type, BrickSize size) {
   };
 }
 
-class Brick extends BodyComponent with ContactCallbacks {
+class Brick extends BodyComponentWithUserData with ContactCallbacks {
   Brick({
     required this.type,
     required this.size,
