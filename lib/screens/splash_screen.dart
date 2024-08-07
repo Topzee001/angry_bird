@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import '../Authentication/login.dart';
 import 'game_screen.dart';
 
 class MySplashScreen extends StatefulWidget {
@@ -17,7 +18,7 @@ class _MySplashScreenState extends State<MySplashScreen> {
     super.initState();
     Timer(const Duration(seconds: 3), () {
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => const GameScreen()),
+        MaterialPageRoute(builder: (context) => const LoginScreen()),
       );
     });
   }
