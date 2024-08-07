@@ -39,7 +39,7 @@ class MyGame extends Forge2DGame {
     tiles = spriteSheets[2];
 
     add(SpriteComponent()
-      ..sprite = await loadSprite('background.png')
+      ..sprite = await loadSprite('background.png',)
       ..size = size);
 
     unawaited(addBricks().then((_) => addEnemies()));

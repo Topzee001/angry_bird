@@ -2,8 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import 'angry_bird_screen.dart';
-import '../main.dart';
+import 'game_screen.dart';
 
 class MySplashScreen extends StatefulWidget {
   const MySplashScreen({super.key});
@@ -18,7 +17,7 @@ class _MySplashScreenState extends State<MySplashScreen> {
     super.initState();
     Timer(const Duration(seconds: 3), () {
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => const AngryBirdScreen()),
+        MaterialPageRoute(builder: (context) => const GameScreen()),
       );
     });
   }
@@ -27,7 +26,7 @@ class _MySplashScreenState extends State<MySplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/images/splashscreen.png'),
             fit: BoxFit.cover,

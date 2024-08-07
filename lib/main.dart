@@ -1,11 +1,14 @@
-import 'package:flame/game.dart';
+import 'package:angry_bird/screens/splash_screen.dart';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  Flame.device.fullScreen();
-  Flame.device.setLandscape();
-
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.landscapeRight,
+    DeviceOrientation.landscapeLeft,
+  ]);
   runApp(const MyApp());
 }
 
@@ -15,17 +18,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: MySplashScreen(),
+      title: 'Angry Bird',
+      theme: ThemeData(
+        primarySwatch: Colors.red,
+      ),
+      home: const MySplashScreen(),
     );
   }
-}
-  WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.landscapeRight,
-    DeviceOrientation.landscapeLeft,
-  ]);
-  runApp(GameWidget(game: MyGame()));
 }
 
 
