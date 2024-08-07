@@ -276,21 +276,6 @@ class Brick extends BodyComponentWithUserData with ContactCallbacks {
 
   late final SpriteComponent _spriteComponent;
 
-  @override
-  set onBeginContact(
-      void Function(Object other, Contact contact)? onBeginContact) {
-    print("object");
-    print(onBeginContact);
-    super.onBeginContact = onBeginContact;
-  }
-
-  @override
-  set onEndContact(
-      void Function(Object other, Contact contact)? _onEndContact) {
-    print("object");
-    super.onEndContact = _onEndContact;
-  }
-
   final BrickType type;
   final BrickSize size;
   final Map<BrickDamage, Sprite> _sprites;
