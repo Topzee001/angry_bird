@@ -1,12 +1,15 @@
+import 'package:angry_bird/components/actors/bird.dart';
 import 'package:flame/components.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
 
-import 'body_component_with_user_data.dart';
+import '../body_component_with_user_data.dart';
 
 const enemySize = 5.0;
 
 class Enemy extends BodyComponentWithUserData with ContactCallbacks {
   Function? onContactCallBack;
+  late final AudioPool destroyedSfx;
 
   Enemy(
       {required Vector2 position,
@@ -34,14 +37,24 @@ class Enemy extends BodyComponentWithUserData with ContactCallbacks {
         );
 
   @override
+  Future<void> onLoad() async {
+    await super.onLoad();
+    destroyedSfx = await AudioPool.createFromAsset(
+        path: 'audio/sfx/destroyed.mp3', maxPlayers: 1);
+  }
+
+  @override
   void beginContact(Object other, Contact contact) {
     int interceptVelocity =
         (contact.bodyA.linearVelocity - contact.bodyB.linearVelocity)
             .length
             .abs()
             .toInt();
-    if (interceptVelocity > 35) {
-      removeFromParent();
+    if (other is Bird) {
+      destroyedSfx.start();
+      if (interceptVelocity > 35) {
+        removeFromParent();
+      }
     }
 
     // onContactCallBack!(int interceptVelocity);

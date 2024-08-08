@@ -25,7 +25,7 @@ class MyTextField extends StatelessWidget {
             BoxShadow(
                 color: Colors.black.withOpacity(0.2),
                 blurRadius: 5,
-                offset: Offset(0, 3))
+                offset: const Offset(0, 3))
           ]),
       child: TextFormField(
         keyboardType: keyboardType,
@@ -40,20 +40,20 @@ class MyTextField extends StatelessWidget {
             color: Colors.red.shade300,
             fontFamily: 'AngryBirds',
           ),
-          border: OutlineInputBorder(
+          border: const OutlineInputBorder(
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(15), topRight: Radius.circular(15)),
             borderSide: BorderSide(color: Colors.transparent),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15),
-            borderSide: BorderSide(color: Colors.transparent),
+            borderSide: const BorderSide(color: Colors.transparent),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15),
-            borderSide: BorderSide(color: Colors.transparent),
+            borderSide: const BorderSide(color: Colors.transparent),
           ),
-          contentPadding: EdgeInsets.symmetric(horizontal: 16),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 16),
         ),
         validator: (value) {
           if (value == null || value.isEmpty) {

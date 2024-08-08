@@ -1,5 +1,4 @@
 import 'package:flame/components.dart';
-import 'package:flame/effects.dart';
 import 'package:flame/text.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +9,7 @@ class ScoreEffect extends TextComponent {
           position: position,
           anchor: Anchor.center,
           textRenderer: TextPaint(
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 24,
               color: Colors.yellow,
               fontWeight: FontWeight.bold,

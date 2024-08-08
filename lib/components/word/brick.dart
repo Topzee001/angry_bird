@@ -1,10 +1,13 @@
 import 'dart:math';
 import 'dart:ui' as ui;
 
-import 'package:angry_bird/components/bird.dart';
+import 'package:angry_bird/components/actors/bird.dart';
 import 'package:angry_bird/components/body_component_with_user_data.dart';
+import 'package:angry_bird/components/word/enemy.dart';
+import 'package:angry_bird/components/word/ground.dart';
 import 'package:flame/components.dart';
 import 'package:flame/extensions.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
 
 const brickScale = 0.5;
@@ -279,6 +282,7 @@ class Brick extends BodyComponentWithUserData with ContactCallbacks {
             ]);
 
   late final SpriteComponent _spriteComponent;
+  late final AudioPool bricksCollisionSfx;
 
   final BrickType type;
   final BrickSize size;
@@ -296,6 +300,7 @@ class Brick extends BodyComponentWithUserData with ContactCallbacks {
   @override
   void beginContact(Object other, Contact contact) {
     if (other is Bird) {
+      bricksCollisionSfx.start();
       int interceptVelocity =
           (contact.bodyA.linearVelocity - contact.bodyB.linearVelocity)
               .length
@@ -312,7 +317,7 @@ class Brick extends BodyComponentWithUserData with ContactCallbacks {
   }
 
   @override
-  Future<void> onLoad() {
+  Future<void> onLoad() async {
     _spriteComponent = SpriteComponent(
       anchor: Anchor.center,
       scale: Vector2.all(1),
@@ -321,6 +326,8 @@ class Brick extends BodyComponentWithUserData with ContactCallbacks {
       position: Vector2(0, 0),
     );
     add(_spriteComponent);
+    bricksCollisionSfx = await AudioPool.createFromAsset(
+        path: 'audio/sfx/wood_collision.mp3', maxPlayers: 1);
     return super.onLoad();
   }
 }

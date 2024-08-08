@@ -9,7 +9,7 @@ class ScoreDisplay extends TextComponent {
           text: 'Score: 0',
           position: position ?? Vector2(20, 20),
           textRenderer: TextPaint(
-            style: TextStyle(
+            style: const TextStyle(
                 fontFamily: "AngryBirds", color: Colors.white, fontSize: 42),
           ),
         );
