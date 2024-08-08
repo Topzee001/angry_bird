@@ -33,7 +33,7 @@ class _MyForgotPasswordState extends State<MyForgotPassword> {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    final containerWidth = screenWidth * 0.8;
+    final containerWidth = screenWidth / 2;
 
     return Scaffold(
       body: Container(
@@ -60,34 +60,38 @@ class _MyForgotPasswordState extends State<MyForgotPassword> {
                           fontFamily: 'AngryBirds'),
                     ),
                     const SizedBox(height: 15),
-                    SizedBox(
-                      width: containerWidth,
-                      child: MyTextField(
-                        controller: emailController,
-                        labelText: 'Enter your Email Address',
-                        keyboardType: TextInputType.emailAddress,
-                        obscureText: false,
-                      ),
+                    MyTextField(
+                      controller: emailController,
+                      labelText: 'Enter your Email Address',
+                      keyboardType: TextInputType.emailAddress,
+                      obscureText: false,
                     ),
-                    const SizedBox(height: 15),
+                    const SizedBox(height: 35),
                     SizedBox(
                         width: containerWidth,
-                        child: MyButton(
-                            onTap: resetPassword, text: 'Reset Password')),
+                        child: SizedBox(
+                          width: containerWidth,
+                          child: MyButton(
+                              onTap: resetPassword, text: 'Reset Password'),
+                        )),
                     const SizedBox(
                       height: 10,
                     ),
                     SizedBox(
                         width: containerWidth,
-                        child: MyButton(
-                            onTap: () {
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const LoginScreen()),
-                              );
-                            },
-                            text: 'Login')),
+                        child: SizedBox(
+                          width: containerWidth,
+                          child: MyButton(
+                              onTap: () {
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const LoginScreen()),
+                                );
+                              },
+                              text: 'Login'),
+                        )),
                   ],
                 ),
               ),

@@ -90,32 +90,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           fontFamily: 'AngryBirds'),
                     ),
                     const SizedBox(height: 15),
-                    SizedBox(
-                      width: containerWidth,
-                      child: MyTextField(
-                        controller: emailController,
-                        labelText: 'Enter your Email Address',
-                        keyboardType: TextInputType.emailAddress,
-                        obscureText: false,
-                      ),
+                    MyTextField(
+                      controller: emailController,
+                      labelText: 'Enter your Email Address',
+                      keyboardType: TextInputType.emailAddress,
+                      obscureText: false,
                     ),
                     const SizedBox(height: 10),
-                    SizedBox(
-                      width: containerWidth,
-                      child: MyTextField(
-                        controller: passwordController,
-                        labelText: 'Enter your Password',
-                        obscureText: true,
-                      ),
+                    MyTextField(
+                      controller: passwordController,
+                      labelText: 'Enter your Password',
+                      obscureText: true,
                     ),
                     const SizedBox(height: 10),
-                    SizedBox(
-                      width: containerWidth,
-                      child: MyTextField(
-                        controller: confirmPasswordController,
-                        labelText: 'Confirm your Password',
-                        obscureText: true,
-                      ),
+                    MyTextField(
+                      controller: confirmPasswordController,
+                      labelText: 'Confirm your Password',
+                      obscureText: true,
                     ),
                     const SizedBox(height: 15),
                     SizedBox(

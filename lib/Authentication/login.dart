@@ -40,7 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    final containerWidth = screenWidth / 3;
+    final containerWidth = screenWidth / 2;
 
     return Scaffold(
       body: Container(
@@ -109,19 +109,24 @@ class _LoginScreenState extends State<LoginScreen> {
                       ],
                     ),
                     const SizedBox(height: 15),
-                    MyButton(onTap: logIn, text: 'Login!'),
+                    SizedBox(
+                        width: containerWidth,
+                        child: MyButton(onTap: logIn, text: 'Login')),
                     const SizedBox(
                       height: 10,
                     ),
-                    MyButton(
-                        onTap: () {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const SignUpScreen()),
-                          );
-                        },
-                        text: 'SIgn Up')
+                    SizedBox(
+                      width: containerWidth,
+                      child: MyButton(
+                          onTap: () {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const SignUpScreen()),
+                            );
+                          },
+                          text: 'SIgn Up'),
+                    )
                   ],
                 ),
               ),

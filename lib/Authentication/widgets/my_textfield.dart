@@ -37,7 +37,7 @@ class MyTextField extends StatelessWidget {
           filled: true,
           labelText: labelText,
           labelStyle: TextStyle(
-            color: Colors.red.shade300,
+            color: Colors.grey.shade500,
             fontFamily: 'AngryBirds',
           ),
           border: const OutlineInputBorder(
