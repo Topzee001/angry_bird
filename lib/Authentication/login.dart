@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import '../components/my_button.dart';
 import '../components/my_textfield.dart';
 import '../screens/game_screen.dart';
+import '../screens/level_screen.dart';
 import 'forget_password.dart';
 import 'signup.dart';
 
@@ -29,9 +30,9 @@ class _LoginScreenState extends State<LoginScreen> {
       return;
     }
     Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => const GameScreen()),
-    );
+        context, MaterialPageRoute(builder: (context) => LevelScreen())
+        //const GameScreen()),
+        );
   }
 
   @override
@@ -94,12 +95,15 @@ class _LoginScreenState extends State<LoginScreen> {
                                         const MyForgotPassword()),
                               );
                             },
-                            child: Text(
-                              'Forgot Password',
-                              style: TextStyle(
-                                  color: Colors.grey.shade700,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'AngryBirds'),
+                            child: Padding(
+                              padding: const EdgeInsets.only(right: 5.0),
+                              child: Text(
+                                'Forgot Password',
+                                style: TextStyle(
+                                    color: Colors.grey.shade700,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'AngryBirds'),
+                              ),
                             ),
                           ),
                         ),
