@@ -1,7 +1,7 @@
 import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 
-import '../components/my_button.dart';
+import '../components/utils/my_button.dart';
 import '../screens/home_screen.dart';
 import 'widgets/my_textfield.dart';
 

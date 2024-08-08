@@ -35,11 +35,6 @@ class Bird extends BodyComponentWithUserData
   final Sprite _sprite;
 
   @override
-  void beginContact(Object other, Contact contact) {
-    super.beginContact(other, contact);
-  }
-
-  @override
   Future<void> onLoad() async {
     launchSfx = await AudioPool.create(
         source: AssetSource('audio/sfx/launch.mp3'), maxPlayers: 1);

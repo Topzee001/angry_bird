@@ -3,7 +3,7 @@ import 'package:angry_bird/Authentication/widgets/my_textfield.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 
-import '../components/my_button.dart';
+import '../components/utils/my_button.dart';
 
 
 

@@ -16,7 +16,6 @@
   - [Useful resources](#useful-resources)
 - [API Integration](#flame-and-forged2d)
 - [UI/UX](#uiux)
-- [Mobile Architecture](#mobile-architecture)
 - [Future Improvements](#future-improvements)
 - [APK Download](#apk-download)
 - [Live Demo Link](#live-demo-link)
@@ -47,16 +46,16 @@ Angry Bird is a 2D  mobile game inspired by "Angry Birds," where players launch 
 
 ### Screenshot
 
-![Onbording screen](/gitfiles/screenshot3.png)
-![Enable NFC Screen](gitfiles/screenshot13.jpg)
-![Optin Screen](/gitfiles/screenshot4.png)
-![Error Screen](/gitfiles/screenshot5.png)
-![Add New Prroduct Screen](/gitfiles/screenshot6.png)
-![Write to NFC](/gitfiles/screenshot7.png)
-![alt text](/gitfiles/screenshot8.png)
+![Home screen](/gitfiles/screenshot3.png)
+<!-- ![Select Level Screen](gitfiles/screenshot13.jpg) -->
+![Level Screen](/gitfiles/screenshot4.png)
+![Playing game](/gitfiles/screenshot5.png)
+![Playing game](/gitfiles/screenshot6.png)
+![Playing game](/gitfiles/screenshot7.png)
+<!-- ![alt text](/gitfiles/screenshot8.png)
 ![alt text](/gitfiles/screenshot9.png)
 ![alt text](/gitfiles/screenshot11.png)
-![alt text](/gitfiles/screenshot10.png)
+![alt text](/gitfiles/screenshot10.png) -->
 
 ## Features
 
@@ -68,8 +67,7 @@ Angry Bird is a 2D  mobile game inspired by "Angry Birds," where players launch 
 - Levels and Progression:
   - Level Design: The game include multiple levels with increasing difficulty.
   - Scoring System: Players can earn scores by destroying characters and obstacles.
-  <!-- - Unlockable Content: Provide new characters, abilities, and levels as rewards for progression. -->
-
+  
 ## The process
 
 ### Built with
@@ -84,12 +82,9 @@ Developing the Angry Bird mobile game app provided several valuable insights and
 Developers were paired in a team of five to work together to bring this project idea to live.
 - Understanding game engine of flutter
 The development provided insight to flutter game engine using flame and forge2D.
-<!-- - State Management
-Implementing state management with the Bloc package in Flutter was essential for maintaining and updating the app's state efficiently. This pattern helped in separating the business logic from the UI, making the code more maintainable and scalable. -->
+
 - Effective UI/UX Design
 Creating a user-friendly interface involved using various Flutter widgets to provide a smooth and responsive experience. The pull-to-refresh feature and shimmer loading effect were particularly effective in improving the user experience by providing visual feedback during data loading.
-<!-- - MVVM Architecture
-Adopting the MVVM architecture pattern was a significant step in organizing the codebase. This architecture facilitated a clear separation of concerns, making the app easier to manage and extend. -->
 
 ## Installation
 
@@ -144,46 +139,37 @@ Forge2D is a 2D physics engine for Dart that's based on the open-source Box2D ph
 
 ## UI/UX
 
-Angry Bird provides an intuitive and user-friendly interface:
+Angry Bird provides an Intuitive and user-friendly interface:
 
 - Splash Screen: Displays an icon and app name while initializing.
-- 
-- Menu Screen: List of all menus cutomers can order from.
-- Add item Screen: Screen for adding new meal items to the menu.
-
-## Mobile Architecture
-
-Angry Bird follows the MVVM (Model-View-ViewModel) architecture pattern, which separates the business logic from the UI. This architecture enhances code maintainability and testability.
-
-Code Structure:
-
-- Models: Defines the data structures used in the app.
-- ViewModels (Providers): Manages the app's data and business logic.
-- Views: Contains the UI components and screens.
+- Level Screen: Players can select the levle they want to play in the game.
+- Home Screen: The home screen provides player option to leader board for scores of other users and option for going to game settings.
+- Game Screen: The game screen provide an Intuitive and amazing gaming experience for players as they can interact with the bird to destroy bricks .
+- Sound and Visual Effect: The game provides background sound and effect sound when the bird collides with obstacles or enemies.
 
 ## Future Improvements
 
-- Enhanced Error Handling: Improving error handling mechanisms to provide more informative feedback to the users and developers.
+- Enhanced Error Handling: Improving error handling mechanisms to provide more informative feedback to the users.
 - Testing: Incorporating unit and integration tests to ensure the app's reliability and catch potential issues early.
-- Performance Optimization: Optimizing the app's performance, particularly in handling large datasets and images, to ensure a smooth user experience.
+- Performance Optimization: Optimizing the app's performance, particularly in handling more levels and user interaction, to ensure a smooth user experience.
 - User Feedback: Gathering user feedback and iterating on the app's features and design based on real-world usage.
-- Scalability: Preparing the app for scalability to handle more products, users, and potential new features in the future.
+- Scalability: Preparing the app for scalability to handle more users, and potential new features in the future.
 
 ## APK Download
 
 Download the latest version of the app from the link below:
 
-[Download APK](https://)
+[Download APK](https://drive.google.com/file/d/1lZwRXLu-XGd88oW4WYhV4x5HDe4kcGXi/view?usp=drive_link)
 or
-Download [here](gitfiles/angry_bird.apk)
+Download [here](gitfiles/angry-birds.apk)
 
 ## Live Demo Link
 
-Try the game: [Appetize Link](https://)
+Try the game: [Appetize Link](https://appetize.io/app/b_evcbl2n3j26dj2poz44pd3h244)
 
 ## Authors
 
-#### Uma Godwin
+### Uma Godwin
 
 - Linkedin - [@godwinekeuma](https://www.linkedin.com/in/godwinekeuma)
 - Email - [godwinekeuma@gmail.com](godwinekeuma@gmail.com)

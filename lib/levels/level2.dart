@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:angry_bird/components/buttons.dart';
-import 'package:angry_bird/components/pauseMenu.dart';
-import 'package:angry_bird/components/score_display.dart';
-import 'package:angry_bird/components/score_effect.dart';
+import 'package:angry_bird/components/utils/buttons.dart';
+import 'package:angry_bird/components/utils/pause_menu.dart';
+import 'package:angry_bird/components/utils/score_display.dart';
+import 'package:angry_bird/components/utils/score_effect.dart';
 import 'package:angry_bird/components/word/enemy.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
