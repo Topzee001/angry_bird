@@ -1,103 +1,132 @@
+import 'package:angry_bird/screens/game_screen.dart';
 import 'package:flutter/material.dart';
+
+import 'level_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Homescreen(), 
-    );
-  }
-}
-
-class Homescreen extends StatelessWidget {
-  const Homescreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Stack(
-        children: [
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const PhysicalModel(
-                  color: Colors.transparent,
-                  shadowColor: Colors.black,
-                  elevation: 8.0,
-                  child: Padding(
-                    padding: EdgeInsets.all(4.0), 
-                    child: Text(
-                      'Angry Birds',
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/home_background.png"),
+            fit: BoxFit.fill,
+          ),
+        ),
+        child: Stack(
+          children: [
+            Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const PhysicalModel(
+                    color: Colors.transparent,
+                    shadowColor: Colors.black,
+                    elevation: 8.0,
+                    child: Padding(
+                      padding: EdgeInsets.all(4.0),
+                      child: Text(
+                        'Angry Birds',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 70,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'AngryBirds'),
                       ),
                     ),
                   ),
+<<<<<<< HEAD
+                  Container(
+                    width: 500,
+                    height: 200,
+                    child: Image.asset('assets/images/angry_group.png'),
+                    // decoration: BoxDecoration(
+                    //   image: DecorationImage(
+                    //       image: AssetImage('assets/images/angry_group.png'),
+                    //       fit: BoxFit.fill),
+                    // ),
+=======
                 ),
                 const SizedBox(height: 20),
                 // Play Button
                 ElevatedButton(
                   onPressed: () {
-                    // Add your onPressed logic here
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => GameScreen()),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.amber,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8), 
+                      borderRadius: BorderRadius.circular(8),
                     ),
+>>>>>>> efce17fddf4beab9f72a35ff922bc9f22f8c4665
                   ),
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
-                    child: Text(
-                      'Play',
-                      style: TextStyle(
-                        color: Colors.white,
+
+                  const SizedBox(height: 20),
+                  // Play Button
+                  ElevatedButton(
+                    onPressed: () {
+                      // Add your onPressed logic here
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => LevelScreen()
+                            //const GameScreen()
+                            ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.red,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    child: const Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 24.0, vertical: 12.0),
+                      child: Text(
+                        'Play Now!',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'AngryBirds',
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          Positioned(
-            bottom: 16,
-            left: 16,
-            child: FloatingActionButton(
-              onPressed: () {
-                // Add your onPressed logic here
-              },
-              backgroundColor: Colors.amber,
-              child: const Icon(Icons.circle, color: Colors.white),
+            Positioned(
+              bottom: 16,
+              left: 16,
+              child: FloatingActionButton(
+                onPressed: () {
+                  // Add your onPressed logic here
+                },
+                backgroundColor: Colors.amber.shade900,
+                child: const Icon(Icons.settings, color: Colors.white),
+              ),
             ),
-          ),
-          Positioned(
-            bottom: 16,
-            left: MediaQuery.of(context).size.width / 2 - 28, 
-            child: FloatingActionButton(
-              onPressed: () {
-                // Add your onPressed logic here
-              },
-              backgroundColor: Colors.amber,
-              child: const Icon(Icons.star, color: Colors.white),
+            Positioned(
+              bottom: 16,
+              right: 16,
+              child: FloatingActionButton(
+                onPressed: () {
+                  // Add your onPressed logic here
+                },
+                backgroundColor: Colors.amber.shade900,
+                child: const Icon(Icons.leaderboard, color: Colors.white),
+              ),
             ),
-          ),
-          Positioned(
-            bottom: 16,
-            right: 16,
-            child: FloatingActionButton(
-              onPressed: () {
-                // Add your onPressed logic here
-              },
-              backgroundColor: Colors.amber,
-              child: const Icon(Icons.edit, color: Colors.white),
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

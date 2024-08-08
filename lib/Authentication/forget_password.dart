@@ -1,7 +1,11 @@
 import 'package:angry_bird/Authentication/login.dart';
+import 'package:angry_bird/Authentication/widgets/my_textfield.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../components/my_button.dart';
+
+import '../screens/game_screen.dart';
 import 'widgets/my_textfield.dart';
 
 class MyForgotPassword extends StatefulWidget {

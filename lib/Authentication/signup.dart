@@ -1,7 +1,11 @@
 import 'package:angry_bird/Authentication/login.dart';
+import 'package:angry_bird/Authentication/widgets/my_textfield.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../components/my_button.dart';
+
+import '../screens/game_screen.dart';
 import 'widgets/my_textfield.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -59,7 +63,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    final containerWidth = screenWidth * 0.8;
+    final containerWidth = screenWidth / 2;
 
     return Scaffold(
       body: Container(
@@ -105,10 +109,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                     ),
                     const SizedBox(height: 10),
-                    MyTextField(
-                      controller: confirmPasswordController,
-                      labelText: 'Confirm your Password',
-                      obscureText: true,
+                    SizedBox(
+                      width: containerWidth,
+                      child: MyTextField(
+                        controller: confirmPasswordController,
+                        labelText: 'Confirm your Password',
+                        obscureText: true,
+                      ),
                     ),
                     const SizedBox(height: 15),
                     SizedBox(
@@ -120,14 +127,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     SizedBox(
                         width: containerWidth,
                         child: MyButton(
-                            onTap: () {
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const LoginScreen()),
-                              );
-                            },
-                            text: 'Login')),
+                          onTap: () {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const LoginScreen()),
+                            );
+                          },
+                          text: 'Login',
+                        )),
                   ],
                 ),
               ),
