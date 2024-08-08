@@ -1,10 +1,30 @@
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 
 import 'level_screen.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+
+  @override
+  void initState() {
+    super.initState();
+    FlameAudio.bgm.initialize();
+    FlameAudio.bgm.play('birds_intro.mp3');
+  }
+
+  @override
+  void dispose() {
+FlameAudio.bgm.stop();
+FlameAudio.bgm.dispose();    
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
