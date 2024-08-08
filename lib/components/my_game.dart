@@ -11,7 +11,6 @@ import 'package:flame_kenney_xml/flame_kenney_xml.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'enemy.dart';
 import 'word/brick.dart';
 import 'word/ground.dart';
 import 'actors/bird.dart';

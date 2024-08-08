@@ -1,3 +1,4 @@
+import 'package:angry_bird/screens/game_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -43,7 +44,10 @@ class Homescreen extends StatelessWidget {
                 // Play Button
                 ElevatedButton(
                   onPressed: () {
-                    // Add your onPressed logic here
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => GameScreen()),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.amber,
