@@ -4,7 +4,7 @@ class MyTextField extends StatelessWidget {
   //final controller;
   final String labelText;
   final bool obscureText;
-  final controller;
+  final TextEditingController controller;
   final TextInputType? keyboardType;
   const MyTextField({
     super.key,
@@ -16,25 +16,44 @@ class MyTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 250.0),
+    return Container(
+      decoration: BoxDecoration(
+          color: Colors.white.withOpacity(0.8),
+          borderRadius: BorderRadius.circular(15),
+          border: Border.all(color: Colors.brown, width: 3),
+          boxShadow: [
+            BoxShadow(
+                color: Colors.black.withOpacity(0.2),
+                blurRadius: 5,
+                offset: Offset(0, 3))
+          ]),
       child: TextFormField(
         keyboardType: keyboardType,
         controller: controller,
         obscureText: obscureText,
         decoration: InputDecoration(
-          // enabledBorder: const OutlineInputBorder(
-          //   borderSide: BorderSide(color: Colors.white),
-          // ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey.shade400),
-          ),
+          //focusedBorder: InputBorder.none,
           fillColor: Colors.grey.shade200,
           filled: true,
           labelText: labelText,
-          labelStyle: TextStyle(color: Colors.grey.shade500),
-          border: const OutlineInputBorder(),
-          contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+          labelStyle: TextStyle(
+            color: Colors.red.shade300,
+            fontFamily: 'AngryBirds',
+          ),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(15), topRight: Radius.circular(15)),
+            borderSide: BorderSide(color: Colors.transparent),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15),
+            borderSide: BorderSide(color: Colors.transparent),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15),
+            borderSide: BorderSide(color: Colors.transparent),
+          ),
+          contentPadding: EdgeInsets.symmetric(horizontal: 16),
         ),
         validator: (value) {
           if (value == null || value.isEmpty) {
