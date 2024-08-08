@@ -8,8 +8,8 @@ import '../body_component_with_user_data.dart';
 const enemySize = 5.0;
 
 class Enemy extends BodyComponentWithUserData with ContactCallbacks {
-  Function? onContactCallBack;
   late final AudioPool destroyedSfx;
+  void Function(int score)? onContactCallBack;
 
   Enemy(
       {required Vector2 position,
@@ -53,22 +53,27 @@ class Enemy extends BodyComponentWithUserData with ContactCallbacks {
     if (other is Bird) {
       destroyedSfx.start();
       if (interceptVelocity > 35) {
-        removeFromParent();
+        int interceptVelocity =
+            (contact.bodyA.linearVelocity - contact.bodyB.linearVelocity)
+                .length
+                .abs()
+                .toInt();
+        if (interceptVelocity > 20) {
+          onContactCallBack!(15000);
+          removeFromParent();
+        }
+        super.beginContact(other, contact);
       }
-    }
 
-    // onContactCallBack!(int interceptVelocity);
+      @override
+      void update(double dt) {
+        super.update(dt);
 
-    super.beginContact(other, contact);
-  }
-
-  @override
-  void update(double dt) {
-    super.update(dt);
-
-    if (position.x > camera.visibleWorldRect.right + 10 ||
-        position.x < camera.visibleWorldRect.left - 10) {
-      removeFromParent();
+        if (position.x > camera.visibleWorldRect.right + 10 ||
+            position.x < camera.visibleWorldRect.left - 10) {
+          removeFromParent();
+        }
+      }
     }
   }
 }
