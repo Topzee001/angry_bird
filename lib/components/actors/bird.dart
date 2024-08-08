@@ -2,15 +2,20 @@ import 'package:angry_bird/components/body_component_with_user_data.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
 import 'package:flame/events.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
 import 'package:flutter/material.dart';
 
 const playerSize = 5.0;
 
 class Bird extends BodyComponentWithUserData
-    with DragCallbacks, ContactCallbacks {
-  Bird(Vector2 position, Sprite sprite)
-      : _sprite = sprite,
+    with DragCallbacks, ContactCallbacks, TapCallbacks {
+  late AudioPool launchSfx;
+  late AudioPool flyingSfx;
+  Bird({
+    required Vector2 position,
+    required Sprite sprite,
+  })  : _sprite = sprite,
         super(
           renderBody: false,
           bodyDef: BodyDef()
@@ -30,12 +35,16 @@ class Bird extends BodyComponentWithUserData
 
   @override
   void beginContact(Object other, Contact contact) {
-    print(other);
+    debugPrint(other.toString());
     super.beginContact(other, contact);
   }
 
   @override
-  Future<void> onLoad() {
+  Future<void> onLoad() async {
+    launchSfx = await AudioPool.create(
+        source: AssetSource('audio/sfx/launch.mp3'), maxPlayers: 1);
+    flyingSfx = await AudioPool.create(
+        source: AssetSource('audio/sfx/flying.mp3'), maxPlayers: 1);
     addAll([
       CustomPainterComponent(
         painter: _DragPainter(this, world.gravity),
@@ -74,11 +83,25 @@ class Bird extends BodyComponentWithUserData
 
   @override
   void onDragStart(DragStartEvent event) {
+    launchSfx.start(volume: 0.8);
+    Future.delayed(
+        const Duration(milliseconds: 1000), () => flyingSfx.start(volume: 0.8));
+
     super.onDragStart(event);
     if (body.bodyType == BodyType.static) {
       _dragStart = event.localPosition;
     }
   }
+ @override
+  void onTapDown(TapDownEvent event) {
+    super.onTapDown(event);
+    if (body.bodyType == BodyType.dynamic) {
+      // Apply additional impulse to make the bird move faster
+      final additionalImpulse = Vector2(5, -5); 
+      body.applyLinearImpulse(additionalImpulse);
+    }
+  }
+
 
   @override
   void onDragUpdate(DragUpdateEvent event) {

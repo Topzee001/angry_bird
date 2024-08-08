@@ -3,14 +3,15 @@ import 'dart:math';
 
 import 'package:angry_bird/components/score_display.dart';
 import 'package:flame/components.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
 import 'package:flame_kenney_xml/flame_kenney_xml.dart';
 import 'package:flutter/material.dart';
 
-import 'brick.dart';
-import 'enemy.dart';
-import 'ground.dart';
-import 'bird.dart';
+import 'word/brick.dart';
+import 'word/enemy.dart';
+import 'word/ground.dart';
+import 'actors/bird.dart';
 
 class AngryBirds extends Forge2DGame {
   late final XmlSpriteSheet aliens;
@@ -30,7 +31,8 @@ class AngryBirds extends Forge2DGame {
   @override
   FutureOr<void> onLoad() async {
     await super.onLoad();
-
+    FlameAudio.bgm.initialize();
+    FlameAudio.bgm.play('birds_intro.mp3');
     final spriteSheets = await Future.wait([
       XmlSpriteSheet.load(
         imagePath: 'spritesheet_aliens.png',
@@ -60,6 +62,13 @@ class AngryBirds extends Forge2DGame {
     unawaited(addBricks().then((_) => addEnemies()));
     await addGround();
     await addPlayer();
+  }
+
+  @override
+  void onRemove() {
+    FlameAudio.bgm.stop();
+    FlameAudio.bgm.dispose();
+    super.onRemove();
   }
 
   Future<void> addGround() {
@@ -105,8 +114,8 @@ class AngryBirds extends Forge2DGame {
     final sprite = await loadSprite('Red.png');
     return world.add(
       Bird(
-        Vector2(camera.visibleWorldRect.left * 2 / 5, 0),
-        sprite,
+        position: Vector2(camera.visibleWorldRect.left * 2 / 5, 0),
+        sprite: sprite,
       ),
     );
   }

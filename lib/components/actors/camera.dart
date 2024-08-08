@@ -1,4 +1,4 @@
-import 'package:angry_bird/components/bird.dart';
+import 'package:angry_bird/components/actors/bird.dart';
 import 'package:flame/camera.dart';
 
 class AngryBirdsCamera extends CameraComponent {

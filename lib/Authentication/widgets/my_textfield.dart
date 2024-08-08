@@ -33,8 +33,8 @@ class MyTextField extends StatelessWidget {
           filled: true,
           labelText: labelText,
           labelStyle: TextStyle(color: Colors.grey.shade500),
-          border: OutlineInputBorder(),
-          contentPadding: EdgeInsets.symmetric(horizontal: 16),
+          border: const OutlineInputBorder(),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 16),
         ),
         validator: (value) {
           if (value == null || value.isEmpty) {
