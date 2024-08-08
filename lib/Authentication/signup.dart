@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 
 import '../components/my_button.dart';
 
-import '../screens/game_screen.dart';
-import 'widgets/my_textfield.dart';
+
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});

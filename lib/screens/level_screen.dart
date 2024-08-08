@@ -13,12 +13,12 @@ class LevelScreen extends StatefulWidget {
 
 class _LevelScreenState extends State<LevelScreen> {
 
-    @override
-  void initState() {
-    super.initState();
-    FlameAudio.bgm.initialize();
-    FlameAudio.bgm.play('birds_intro.mp3');
-  }
+  //   @override
+  // void initState() {
+  //   super.initState();
+  //   FlameAudio.bgm.initialize();
+  //   FlameAudio.bgm.play('birds_intro.mp3');
+  // }
 
   @override
   void dispose() {

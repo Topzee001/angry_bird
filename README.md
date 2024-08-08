@@ -144,9 +144,10 @@ Forge2D is a 2D physics engine for Dart that's based on the open-source Box2D ph
 
 ## UI/UX
 
-Quick Menu provides an intuitive and user-friendly interface:
+Angry Bird provides an intuitive and user-friendly interface:
 
 - Splash Screen: Displays an icon and app name while initializing.
+- 
 - Menu Screen: List of all menus cutomers can order from.
 - Add item Screen: Screen for adding new meal items to the menu.
 
