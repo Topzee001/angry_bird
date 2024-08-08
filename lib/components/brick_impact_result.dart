@@ -1,4 +1,4 @@
-import 'package:angry_bird/components/word/brick.dart';
+import 'brick.dart';
 
 class BrickImpactResult {
   final BrickDamage newDamageState;
