@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:math';
 
 import 'package:angry_bird/components/buttons.dart';
 import 'package:angry_bird/components/pauseMenu.dart';

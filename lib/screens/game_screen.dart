@@ -3,7 +3,6 @@ import 'package:flame/game.dart';
 import 'package:flame_forge2d/forge2d_game.dart';
 import 'package:flutter/material.dart';
 
-import '../components/my_game.dart';
 import '../levels/level2.dart';
 
 class GameScreen extends StatelessWidget {

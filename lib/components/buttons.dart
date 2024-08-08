@@ -1,9 +1,6 @@
-import 'dart:async';
-import 'dart:ui';
 
 import 'package:flame/components.dart';
 import 'package:flame/input.dart';
-import 'package:flame/particles.dart';
 import 'package:flutter/material.dart';
 
 class PauseButton extends ButtonComponent {

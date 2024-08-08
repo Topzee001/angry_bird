@@ -12,7 +12,6 @@ class LevelScreen extends StatefulWidget {
 }
 
 class _LevelScreenState extends State<LevelScreen> {
-
   //   @override
   // void initState() {
   //   super.initState();
@@ -26,6 +25,7 @@ class _LevelScreenState extends State<LevelScreen> {
     FlameAudio.bgm.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     final List<String> birds = [
@@ -41,8 +41,8 @@ class _LevelScreenState extends State<LevelScreen> {
       'assets/images/home_background.png',
       'assets/images/background.webp',
     ];
-    return WillPopScope(
-      onWillPop: () async => false,
+    return PopScope(
+      canPop:  false,
       child: Scaffold(
         body: Container(
           decoration: const BoxDecoration(
@@ -122,7 +122,7 @@ class _LevelScreenState extends State<LevelScreen> {
             onPressed: () {
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => HomeScreen()),
+                MaterialPageRoute(builder: (context) => const HomeScreen()),
               );
             },
             backgroundColor: Colors.amber.shade900,

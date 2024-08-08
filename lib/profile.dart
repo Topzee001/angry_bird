@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class UserProfile extends StatelessWidget {
+  const UserProfile({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -12,7 +14,7 @@ class UserProfile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 //icon and player info
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     //TODO: icons is dird_sharp
@@ -24,7 +26,7 @@ class UserProfile extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 20.0),
+                const SizedBox(height: 20.0),
 
                 Card(
                   color: Colors.amber,
@@ -36,11 +38,11 @@ class UserProfile extends StatelessWidget {
                     padding: const EdgeInsets.all(16.0),
                     child: Column(
                       children: [
-                        CircleAvatar(
+                        const CircleAvatar(
                           radius: 40,
                           backgroundImage: AssetImage(''),
                         ),
-                        SizedBox(height: 10.0),
+                        const SizedBox(height: 10.0),
                         Wrap(
                           spacing: 10.0,
                           runSpacing: 10.0,
@@ -54,7 +56,8 @@ class UserProfile extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(12.0),
                                 ),
                               ),
-                              child: Icon(Icons.star, color: Colors.white),
+                              child:
+                                  const Icon(Icons.star, color: Colors.white),
                             ),
                           ),
                         ),
@@ -62,34 +65,34 @@ class UserProfile extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 20.0),
+                const SizedBox(height: 20.0),
 
                 //  with a progress bar
-                Text(
+                const Text(
                   'Level: 10/20',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 10.0),
+                const SizedBox(height: 10.0),
                 LinearProgressIndicator(
                   value: 0.5,
                   backgroundColor: Colors.grey[300],
                   color: Colors.orange,
                   minHeight: 8.0,
                 ),
-                SizedBox(height: 20.0),
+                const SizedBox(height: 20.0),
 
-                Text(
+                const Text(
                   'Expert Level',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 20.0),
+                const SizedBox(height: 20.0),
 
                 Wrap(
                   spacing: 10.0,
                   children: List.generate(
                     3,
                     //number of badges
-                    (index) => Icon(Icons.emoji_events,
+                    (index) => const Icon(Icons.emoji_events,
                         color: Colors.amber, size: 40.0),
                   ),
                 ),
