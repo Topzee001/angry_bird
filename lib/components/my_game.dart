@@ -1,30 +1,28 @@
 import 'dart:async';
 import 'dart:math';
 
+import 'package:angry_bird/components/buttons.dart';
+import 'package:angry_bird/components/pauseMenu.dart';
 import 'package:angry_bird/components/score_display.dart';
 import 'package:angry_bird/components/score_effect.dart';
 import 'package:angry_bird/components/word/enemy.dart';
 import 'package:flame/components.dart';
+import 'package:flame/game.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
 import 'package:flame_kenney_xml/flame_kenney_xml.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 
 import 'word/brick.dart';
 import 'word/ground.dart';
 import 'actors/bird.dart';
 
-class AngryBirds extends Forge2DGame {
+class AngryBirds extends Forge2DGame with HasGameRef {
   late final XmlSpriteSheet aliens;
   late final XmlSpriteSheet elements;
   late final XmlSpriteSheet tiles;
-
-  // late Bird currentBird;
-  // late AngryBirdsCamera gameCamera;
-  // late ScoreDisplay scoreDisplay;
-  // late RestartButton restartButton;
-  // late SoundManager soundManager;
+  late final RouterComponent router;
 
   AngryBirds() : super(gravity: Vector2(0, 40.0));
 
@@ -33,6 +31,7 @@ class AngryBirds extends Forge2DGame {
   @override
   FutureOr<void> onLoad() async {
     await super.onLoad();
+
     FlameAudio.bgm.initialize();
     FlameAudio.bgm.play('birds_intro.mp3');
     final spriteSheets = await Future.wait([
@@ -54,12 +53,48 @@ class AngryBirds extends Forge2DGame {
     elements = spriteSheets[1];
     tiles = spriteSheets[2];
 
+    Sprite play = await loadSprite("button.png");
+    Sprite exit = await loadSprite("exit.png");
+    Sprite pause = await loadSprite("pause.png");
+    Sprite restart = await loadSprite("restart.png");
+    Sprite catapult = await loadSprite("catapult.png");
+
     add(SpriteComponent()
       ..sprite = await loadSprite('background.png')
       ..size = size);
-
     scoreDisplay = ScoreDisplay();
     add(scoreDisplay);
+
+    // add(RestartButton());
+
+    add(PauseButton(
+      position: Vector2(gameRef.size.r - 100, 20),
+      sprite: pause,
+      pausePressed: () {
+        gameRef.add(
+          PauseMenu(
+            restartSprite: restart,
+            resumeSprite: play,
+            exitSprite: exit,
+            resumePressed: () {
+              removeFromParent();
+            },
+            centerPosition: gameRef.size / 2,
+            restartPressed: () {
+              pauseWhenBackgrounded = true;
+              removeFromParent();
+            },
+            exitPressed: () {
+              removeFromParent();
+            },
+          ),
+        );
+      },
+    ));
+
+    world.add(PositionComponent(children: [
+      SpriteComponent(sprite: catapult, size: Vector2.all(10)),
+    ], position: Vector2(camera.visibleWorldRect.left * 2 / 4, 0)));
 
     unawaited(addBricks().then((_) => addEnemies()));
     await addGround();
@@ -137,6 +172,7 @@ class AngryBirds extends Forge2DGame {
         world.children.whereType<Enemy>().isNotEmpty) {
       addPlayer();
     }
+    if (isMounted) {}
     if (isMounted &&
         enemiesFullyAdded &&
         world.children.whereType<Enemy>().isEmpty &&
@@ -150,6 +186,7 @@ class AngryBirds extends Forge2DGame {
             text: 'You win!',
             anchor: Anchor.center,
             position: e.position,
+            children: [],
             textRenderer: TextPaint(
               style: TextStyle(color: e.color, fontSize: 16),
             ),

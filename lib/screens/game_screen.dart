@@ -8,8 +8,8 @@ class GameScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const GameWidget.controlled(
-      gameFactory: AngryBirds.new,
+    return GameWidget(
+      game: AngryBirds(),
     );
   }
 }
