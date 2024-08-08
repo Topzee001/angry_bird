@@ -52,28 +52,21 @@ class Enemy extends BodyComponentWithUserData with ContactCallbacks {
             .toInt();
     if (other is Bird) {
       destroyedSfx.start();
-      if (interceptVelocity > 35) {
-        int interceptVelocity =
-            (contact.bodyA.linearVelocity - contact.bodyB.linearVelocity)
-                .length
-                .abs()
-                .toInt();
-        if (interceptVelocity > 20) {
-          onContactCallBack!(15000);
-          removeFromParent();
-        }
-        super.beginContact(other, contact);
+      if (interceptVelocity > 10) {
+        onContactCallBack!(15000);
+        removeFromParent();
       }
+      super.beginContact(other, contact);
+    }
+  }
 
-      @override
-      void update(double dt) {
-        super.update(dt);
+  @override
+  void update(double dt) {
+    super.update(dt);
 
-        if (position.x > camera.visibleWorldRect.right + 10 ||
-            position.x < camera.visibleWorldRect.left - 10) {
-          removeFromParent();
-        }
-      }
+    if (position.x > camera.visibleWorldRect.right + 10 ||
+        position.x < camera.visibleWorldRect.left - 10) {
+      removeFromParent();
     }
   }
 }

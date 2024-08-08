@@ -12,6 +12,7 @@ class Bird extends BodyComponentWithUserData
     with DragCallbacks, ContactCallbacks, TapCallbacks {
   late AudioPool launchSfx;
   late AudioPool flyingSfx;
+
   Bird({
     required Vector2 position,
     required Sprite sprite,
@@ -91,16 +92,6 @@ class Bird extends BodyComponentWithUserData
       _dragStart = event.localPosition;
     }
   }
- // @override
- //  void onTapDown(TapDownEvent event) {
- //    super.onTapDown(event);
- //    if (body.bodyType == BodyType.dynamic) {
- //      // Apply additional impulse to make the bird move faster
- //      final additionalImpulse = Vector2(5, -5);
- //      body.applyLinearImpulse(additionalImpulse);
- //    }
- //  }
-
 
   @override
   void onDragUpdate(DragUpdateEvent event) {
@@ -202,26 +193,3 @@ class _DragPainter extends CustomPainter {
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
 }
-
-// class _DragPainter extends CustomPainter {
-//   _DragPainter(this.player);
-//
-//   final Player player;
-//
-//   @override
-//   void paint(Canvas canvas, Size size) {
-//     if (player.dragDelta != Vector2.zero()) {
-//       var center = size.center(Offset.zero);
-//       canvas.drawLine(
-//           center,
-//           center + (player.dragDelta * -1).toOffset(),
-//           Paint()
-//             ..color = Colors.grey.withOpacity(0.7)
-//             ..strokeWidth = 0.2
-//             ..strokeCap = StrokeCap.round);
-//     }
-//   }
-//
-//   @override
-//   bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
-// }

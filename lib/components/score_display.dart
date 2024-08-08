@@ -7,7 +7,7 @@ class ScoreDisplay extends TextComponent {
   ScoreDisplay({Vector2? position})
       : super(
           text: 'Score: 0',
-          position: position ?? Vector2(20, 20),
+          position: position ?? Vector2(25, 25),
           textRenderer: TextPaint(
             style: const TextStyle(
                 fontFamily: "AngryBirds", color: Colors.white, fontSize: 42),

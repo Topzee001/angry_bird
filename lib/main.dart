@@ -1,3 +1,4 @@
+import 'package:angry_bird/screens/game_screen.dart';
 import 'package:angry_bird/screens/splash_screen.dart';
 
 import 'package:flutter/material.dart';
