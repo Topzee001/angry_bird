@@ -138,9 +138,9 @@ Also check out these links to start your first flutter project:
 
 ## Flame and Forged2D
 
-Quick Menu integrates with NFC, NFC (Near Field Communication) is a wireless communication technology that allows the exchange of data between devices over short distances, typically less than 10 centimeters. It operates at a frequency of 13.56 MHz and enables quick, secure transactions and data transfer.
+Flutter Flame is an open-source, community-built game engine for Flutter that helps developers build games that require collision, maps, and a game loop. It's a minimalist engine that combines the simplicity of its component system with Flutter's power.
 
-In the context of this project, NFC functionality is utilized to enhance the user experience by providing features such as reading, writing, and editing data on NFC tags. This enables users to interact with physical objects in innovative ways, such as accessing menu items of the restaurant by tapping their phones on NFC-enabled tags.
+Forge2D is a 2D physics engine for Dart that's based on the open-source Box2D physics engine. It's designed for games and can be used independently in Dart or in a Flame project.
 
 ## UI/UX
 

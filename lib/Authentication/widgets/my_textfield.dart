@@ -35,8 +35,8 @@ class MyTextField extends StatelessWidget {
           //focusedBorder: InputBorder.none,
           fillColor: Colors.grey.shade200,
           filled: true,
-          labelText: labelText,
-          labelStyle: TextStyle(
+          hintText: labelText,
+          hintStyle: TextStyle(
             color: Colors.red.shade300,
             fontFamily: 'AngryBirds',
           ),

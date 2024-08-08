@@ -1,12 +1,10 @@
 import 'package:angry_bird/Authentication/login.dart';
 import 'package:angry_bird/Authentication/widgets/my_textfield.dart';
-import 'package:flutter/foundation.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 
 import '../components/my_button.dart';
 
-import '../screens/game_screen.dart';
-import 'widgets/my_textfield.dart';
 
 class MyForgotPassword extends StatefulWidget {
   const MyForgotPassword({super.key});
@@ -29,7 +27,19 @@ class _MyForgotPasswordState extends State<MyForgotPassword> {
       return;
     }
   }
+ @override
+  void initState() {
+    super.initState();
+    FlameAudio.bgm.initialize();
+    FlameAudio.bgm.play('birds_intro.mp3');
+  }
 
+  @override
+  void dispose() {
+FlameAudio.bgm.stop();
+FlameAudio.bgm.dispose();    
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;

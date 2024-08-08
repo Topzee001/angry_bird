@@ -1,4 +1,3 @@
-import 'package:angry_bird/screens/game_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'level_screen.dart';
@@ -9,7 +8,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      // backgroundColor: Colors.white,
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
@@ -39,7 +38,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     width: 500,
                     height: 200,
                     child: Image.asset('assets/images/angry_group.png'),
@@ -49,7 +48,8 @@ class HomeScreen extends StatelessWidget {
                     onPressed: () {
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(builder: (context) => LevelScreen()
+                        MaterialPageRoute(
+                            builder: (context) => const LevelScreen()
                             //const GameScreen()
                             ),
                       );
@@ -80,22 +80,26 @@ class HomeScreen extends StatelessWidget {
             Positioned(
               bottom: 16,
               left: 16,
-              child: FloatingActionButton(
+              child: ElevatedButton(
                 onPressed: () {
                   // Add your onPressed logic here
                 },
-                backgroundColor: Colors.amber.shade900,
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.amber.shade900,
+                    shape: const CircleBorder()),
                 child: const Icon(Icons.settings, color: Colors.white),
               ),
             ),
             Positioned(
               bottom: 16,
               right: 16,
-              child: FloatingActionButton(
+              child: ElevatedButton(
                 onPressed: () {
                   // Add your onPressed logic here
                 },
-                backgroundColor: Colors.amber.shade900,
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.amber.shade900,
+                    shape: const CircleBorder()),
                 child: const Icon(Icons.leaderboard, color: Colors.white),
               ),
             ),

@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flame_audio/flame_audio.dart';
 
 
 import '../Authentication/login.dart';
@@ -18,22 +17,13 @@ class _MySplashScreenState extends State<MySplashScreen> {
   @override
   void initState() {
     super.initState();
-   
-    FlameAudio.bgm.initialize();
-    FlameAudio.bgm.play('birds_intro.mp3');
-    Timer(const Duration(seconds: 3), () {
+       Timer(const Duration(seconds: 4), () {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (context) => const LoginScreen()),
       );
     });
   }
 
-@override
-  void dispose() {
-FlameAudio.bgm.stop();
-    FlameAudio.bgm.dispose();    
-    super.dispose();
-  }
 
 
 

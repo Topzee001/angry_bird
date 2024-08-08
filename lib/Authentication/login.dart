@@ -1,10 +1,10 @@
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 
 import '../components/my_button.dart';
 import '../screens/home_screen.dart';
 import 'widgets/my_textfield.dart';
-import '../screens/game_screen.dart';
-import '../screens/level_screen.dart';
+
 import 'forget_password.dart';
 import 'signup.dart';
 
@@ -30,7 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
     }
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => HomeScreen()
+      MaterialPageRoute(builder: (context) => const HomeScreen()
           //LevelScreen()
           //const GameScreen()
           ),
@@ -38,9 +38,24 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    FlameAudio.bgm.initialize();
+    FlameAudio.bgm.play('birds_intro.mp3');
+  }
+
+  @override
+  void dispose() {
+FlameAudio.bgm.stop();
+FlameAudio.bgm.dispose();    
+    super.dispose();
+  }
+
+
+  @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    final containerWidth = screenWidth / 3;
+    // final containerWidth = screenWidth / 3;
 
     return Scaffold(
       body: Container(
@@ -79,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       labelText: 'Enter your Password',
                       obscureText: true,
                     ),
-                    SizedBox(height: 5),
+                    const SizedBox(height: 5),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
