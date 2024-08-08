@@ -6,7 +6,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Homescreen(), 
+      home: Homescreen(),
     );
   }
 }
@@ -29,7 +29,7 @@ class Homescreen extends StatelessWidget {
                   shadowColor: Colors.black,
                   elevation: 8.0,
                   child: Padding(
-                    padding: EdgeInsets.all(4.0), 
+                    padding: EdgeInsets.all(4.0),
                     child: Text(
                       'Angry Birds',
                       style: TextStyle(
@@ -48,11 +48,12 @@ class Homescreen extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.amber,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8), 
+                      borderRadius: BorderRadius.circular(8),
                     ),
                   ),
                   child: const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
                     child: Text(
                       'Play',
                       style: TextStyle(
@@ -73,17 +74,6 @@ class Homescreen extends StatelessWidget {
               },
               backgroundColor: Colors.amber,
               child: const Icon(Icons.circle, color: Colors.white),
-            ),
-          ),
-          Positioned(
-            bottom: 16,
-            left: MediaQuery.of(context).size.width / 2 - 28, 
-            child: FloatingActionButton(
-              onPressed: () {
-                // Add your onPressed logic here
-              },
-              backgroundColor: Colors.amber,
-              child: const Icon(Icons.star, color: Colors.white),
             ),
           ),
           Positioned(

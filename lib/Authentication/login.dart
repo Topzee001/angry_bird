@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../components/my_button.dart';
+import '../screens/home_screen.dart';
 import 'widgets/my_textfield.dart';
 import '../screens/game_screen.dart';
 import '../screens/level_screen.dart';
@@ -28,9 +29,12 @@ class _LoginScreenState extends State<LoginScreen> {
       return;
     }
     Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => LevelScreen())
-        //const GameScreen()),
-        );
+      context,
+      MaterialPageRoute(builder: (context) => HomeScreen()
+          //LevelScreen()
+          //const GameScreen()
+          ),
+    );
   }
 
   @override
