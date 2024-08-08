@@ -40,7 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    final containerWidth = screenWidth * 0.8;
+    final containerWidth = screenWidth / 3;
 
     return Scaffold(
       body: Container(
@@ -74,13 +74,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       obscureText: false,
                     ),
                     const SizedBox(height: 15),
-                    SizedBox(
-                      width: containerWidth,
-                      child: MyTextField(
-                        controller: passwordController,
-                        labelText: 'Enter your Password',
-                        obscureText: true,
-                      ),
+                    MyTextField(
+                      controller: passwordController,
+                      labelText: 'Enter your Password',
+                      obscureText: true,
                     ),
                     SizedBox(height: 5),
                     Row(
@@ -112,7 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ],
                     ),
                     const SizedBox(height: 15),
-                    MyButton(onTap: logIn, text: 'Play Now!'),
+                    MyButton(onTap: logIn, text: 'Login!'),
                     const SizedBox(
                       height: 10,
                     ),
