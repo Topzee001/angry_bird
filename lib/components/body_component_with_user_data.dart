@@ -15,6 +15,7 @@ class BodyComponentWithUserData extends BodyComponent {
   Body createBody() {
     final body = world.createBody(super.bodyDef!)..userData = this;
     fixtureDefs?.forEach(body.createFixture);
+
     return body;
   }
 }

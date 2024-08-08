@@ -72,12 +72,263 @@ class Playground extends Forge2DGame {
   Future<void> addStructure() async {
     await world.addAll(
       [
-        Wood(
-          elements,
-          brickPosition: Vector2(camera.visibleWorldRect.right / 1.6, 0),
-          brickSize:
-        ),
+        Glass(elements,
+            brickPosition: Vector2(camera.visibleWorldRect.right / 1.2, 10),
+            brickSize: BrickSize.size70x140),
+        Glass(elements,
+            brickPosition: Vector2(camera.visibleWorldRect.right / 1.6, 10),
+            brickSize: BrickSize.size70x140),
+        Glass(elements,
+            brickPosition: Vector2(camera.visibleWorldRect.right / 2.4, 10),
+            brickSize: BrickSize.size70x140),
+        Glass(elements,
+            brickPosition: Vector2(camera.visibleWorldRect.right / 2.4 + 5, 0),
+            brickSize: BrickSize.size220x70),
+        Glass(elements,
+            brickPosition: Vector2(camera.visibleWorldRect.right / 1.2 - 6, 0),
+            brickSize: BrickSize.size220x70),
+        Glass(elements,
+            brickPosition: Vector2(camera.visibleWorldRect.right / 1.4, -2),
+            brickSize: BrickSize.size140x70),
+        Glass(elements,
+            brickPosition: Vector2(camera.visibleWorldRect.right / 1.8, -2),
+            brickSize: BrickSize.size140x70),
       ],
     );
+
+    // await Future<void>.delayed(const Duration(milliseconds: 2000));
+    final sprite = await loadSprite('Pig_29.webp');
+    await world.addAll([
+      Enemy(
+          position: Vector2(camera.visibleWorldRect.right / 1.4, 5),
+          sprite: sprite,
+          onContactCallBack: (score) {
+            add(ScoreEffect(score, color: Colors.green));
+            scoreDisplay.addScore(score);
+          }),
+      Enemy(
+          position: Vector2(camera.visibleWorldRect.right / 2, 5),
+          sprite: sprite,
+          onContactCallBack: (score) {
+            add(ScoreEffect(score, color: Colors.green));
+            scoreDisplay.addScore(score);
+          }),
+      Enemy(
+          position: Vector2(camera.visibleWorldRect.right / 1.6, -3),
+          sprite: sprite,
+          onContactCallBack: (score) {
+            add(ScoreEffect(score, color: Colors.green));
+            scoreDisplay.addScore(score);
+          }),
+    ]);
   }
 }
+
+// --------LEVEL 1--------//
+// Future<void> addStructure() async {
+//   await world.addAll(
+//     [
+//       Glass(elements,
+//           brickPosition: Vector2(camera.visibleWorldRect.right / 1.2, 10),
+//           brickSize: BrickSize.size70x220),
+//       Glass(elements,
+//           brickPosition: Vector2(camera.visibleWorldRect.right / 1.6, 10),
+//           brickSize: BrickSize.size70x220),
+//       Glass(elements,
+//           brickPosition: Vector2(camera.visibleWorldRect.right / 2.4, 10),
+//           brickSize: BrickSize.size70x220),
+//       Wood(elements,
+//           brickPosition: Vector2(camera.visibleWorldRect.right / 2.4 + 4, 0),
+//           brickSize: BrickSize.size220x70),
+//       Wood(elements,
+//           brickPosition: Vector2(camera.visibleWorldRect.right / 1.2 - 4, 0),
+//           brickSize: BrickSize.size220x70),
+//     ],
+//   );
+//
+//   // await Future<void>.delayed(const Duration(milliseconds: 2000));
+//   final sprite = await loadSprite('Pig_29.webp');
+//   await world.addAll([
+//     Enemy(
+//         position: Vector2(camera.visibleWorldRect.right / 1.4, 5),
+//         sprite: sprite,
+//         onContactCallBack: (score) {
+//           add(ScoreEffect(score, color: Colors.green));
+//           scoreDisplay.addScore(score);
+//         }),
+//     Enemy(
+//         position: Vector2(camera.visibleWorldRect.right / 2, 5),
+//         sprite: sprite,
+//         onContactCallBack: (score) {
+//           add(ScoreEffect(score, color: Colors.green));
+//           scoreDisplay.addScore(score);
+//         }),
+//     Enemy(
+//         position: Vector2(camera.visibleWorldRect.right / 1.6, -3),
+//         sprite: sprite,
+//         onContactCallBack: (score) {
+//           add(ScoreEffect(score, color: Colors.green));
+//           scoreDisplay.addScore(score);
+//         }),
+//   ]);
+// }
+
+// ------ LEVEL 2 -------- //
+// Future<void> addStructure() async {
+//   final sprite = await loadSprite('Pig_29.webp');
+//   await world.addAll(
+//     [
+//       Stone(elements,
+//           brickPosition: Vector2(camera.visibleWorldRect.right / 1.2, 10),
+//           brickSize: BrickSize.size70x220),
+//       Stone(elements,
+//           brickPosition: Vector2(camera.visibleWorldRect.right / 1.6, 10),
+//           brickSize: BrickSize.size70x140),
+//       Stone(elements,
+//           brickPosition: Vector2(camera.visibleWorldRect.right / 2.4, 10),
+//           brickSize: BrickSize.size70x70),
+//     ],
+//   );
+//
+//   await world.addAll([
+//     Enemy(
+//         position: Vector2(camera.visibleWorldRect.right / 1.2, 5),
+//         sprite: sprite,
+//         onContactCallBack: (score) {
+//           add(ScoreEffect(score, color: Colors.green));
+//           scoreDisplay.addScore(score);
+//         }),
+//     Enemy(
+//         position: Vector2(camera.visibleWorldRect.right / 1.6, 5),
+//         sprite: sprite,
+//         onContactCallBack: (score) {
+//           add(ScoreEffect(score, color: Colors.green));
+//           scoreDisplay.addScore(score);
+//         }),
+//     Enemy(
+//         position: Vector2(camera.visibleWorldRect.right / 2.4, 5),
+//         sprite: sprite,
+//         onContactCallBack: (score) {
+//           add(ScoreEffect(score, color: Colors.green));
+//           scoreDisplay.addScore(score);
+//         }),
+//   ]);
+// }
+
+// ----- LEVEL 3 ------- //
+
+// Future<void> addStructure() async {
+//   await world.addAll(
+//     [
+//       Metal(elements,
+//           brickPosition: Vector2(camera.visibleWorldRect.right / 1.2, 10),
+//           brickSize: BrickSize.size70x140),
+//       Metal(elements,
+//           brickPosition: Vector2(camera.visibleWorldRect.right / 1.6, 10),
+//           brickSize: BrickSize.size70x140),
+//       Metal(elements,
+//           brickPosition: Vector2(camera.visibleWorldRect.right / 2.4, 10),
+//           brickSize: BrickSize.size70x140),
+//       Wood(elements,
+//           brickPosition: Vector2(camera.visibleWorldRect.right / 2.4 + 5, 0),
+//           brickSize: BrickSize.size220x70),
+//       Wood(elements,
+//           brickPosition: Vector2(camera.visibleWorldRect.right / 1.2 - 6, 0),
+//           brickSize: BrickSize.size220x70),
+//       Stone(elements,
+//           brickPosition: Vector2(camera.visibleWorldRect.right / 1.4 - 1, 0),
+//           brickSize: BrickSize.size70x140),
+//       Stone(elements,
+//           brickPosition: Vector2(camera.visibleWorldRect.right / 2.0 + 1, 0),
+//           brickSize: BrickSize.size70x140),
+//       Explosives(elements,
+//           brickPosition: Vector2(camera.visibleWorldRect.right / 1.6 - 1, -8),
+//           brickSize: BrickSize.size220x70),
+//       Glass(elements,
+//           brickPosition: Vector2(camera.visibleWorldRect.right / 1.6 - 1, -8),
+//           brickSize: BrickSize.size140x70),
+//     ],
+//   );
+//
+//   // await Future<void>.delayed(const Duration(milliseconds: 2000));
+//   final sprite = await loadSprite('Pig_29.webp');
+//   await world.addAll([
+//     Enemy(
+//         position: Vector2(camera.visibleWorldRect.right / 1.4, 5),
+//         sprite: sprite,
+//         onContactCallBack: (score) {
+//           add(ScoreEffect(score, color: Colors.green));
+//           scoreDisplay.addScore(score);
+//         }),
+//     Enemy(
+//         position: Vector2(camera.visibleWorldRect.right / 2, 5),
+//         sprite: sprite,
+//         onContactCallBack: (score) {
+//           add(ScoreEffect(score, color: Colors.green));
+//           scoreDisplay.addScore(score);
+//         }),
+//     Enemy(
+//         position: Vector2(camera.visibleWorldRect.right / 1.6, -3),
+//         sprite: sprite,
+//         onContactCallBack: (score) {
+//           add(ScoreEffect(score, color: Colors.green));
+//           scoreDisplay.addScore(score);
+//         }),
+//   ]);
+// }
+
+//------ LEVEL 4 -----//
+
+// Future<void> addStructure() async {
+//   await world.addAll(
+//     [
+//       Glass(elements,
+//           brickPosition: Vector2(camera.visibleWorldRect.right / 1.2, 10),
+//           brickSize: BrickSize.size70x140),
+//       Glass(elements,
+//           brickPosition: Vector2(camera.visibleWorldRect.right / 1.6, 10),
+//           brickSize: BrickSize.size70x140),
+//       Glass(elements,
+//           brickPosition: Vector2(camera.visibleWorldRect.right / 2.4, 10),
+//           brickSize: BrickSize.size70x140),
+//       Glass(elements,
+//           brickPosition: Vector2(camera.visibleWorldRect.right / 2.4 + 5, 0),
+//           brickSize: BrickSize.size220x70),
+//       Glass(elements,
+//           brickPosition: Vector2(camera.visibleWorldRect.right / 1.2 - 6, 0),
+//           brickSize: BrickSize.size220x70),
+//       Glass(elements,
+//           brickPosition: Vector2(camera.visibleWorldRect.right / 1.4, -2),
+//           brickSize: BrickSize.size140x70),
+//       Glass(elements,
+//           brickPosition: Vector2(camera.visibleWorldRect.right / 1.8, -2),
+//           brickSize: BrickSize.size140x70),
+//     ],
+//   );
+//
+//   // await Future<void>.delayed(const Duration(milliseconds: 2000));
+//   final sprite = await loadSprite('Pig_29.webp');
+//   await world.addAll([
+//     Enemy(
+//         position: Vector2(camera.visibleWorldRect.right / 1.4, 5),
+//         sprite: sprite,
+//         onContactCallBack: (score) {
+//           add(ScoreEffect(score, color: Colors.green));
+//           scoreDisplay.addScore(score);
+//         }),
+//     Enemy(
+//         position: Vector2(camera.visibleWorldRect.right / 2, 5),
+//         sprite: sprite,
+//         onContactCallBack: (score) {
+//           add(ScoreEffect(score, color: Colors.green));
+//           scoreDisplay.addScore(score);
+//         }),
+//     Enemy(
+//         position: Vector2(camera.visibleWorldRect.right / 1.6, -3),
+//         sprite: sprite,
+//         onContactCallBack: (score) {
+//           add(ScoreEffect(score, color: Colors.green));
+//           scoreDisplay.addScore(score);
+//         }),
+//   ]);
+// }
