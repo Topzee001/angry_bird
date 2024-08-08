@@ -1,24 +1,12 @@
-import 'package:angry_bird/components/actors/bird.dart';
 import 'package:flame/components.dart';
-import 'package:flame_audio/flame_audio.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
 
-<<<<<<<< HEAD:lib/components/word/enemy.dart
-import '../body_component_with_user_data.dart';
-========
-import 'bird.dart';
 import 'body_component_with_user_data.dart';
->>>>>>>> 07df9ec (add score system & functionality):lib/components/pig.dart
 
 const enemySize = 5.0;
 
 class Enemy extends BodyComponentWithUserData with ContactCallbacks {
-<<<<<<<< HEAD:lib/components/word/enemy.dart
   Function? onContactCallBack;
-  late final AudioPool destroyedSfx;
-========
-  void Function(int score)? onContactCallBack;
->>>>>>>> 07df9ec (add score system & functionality):lib/components/pig.dart
 
   Enemy(
       {required Vector2 position,
@@ -46,36 +34,18 @@ class Enemy extends BodyComponentWithUserData with ContactCallbacks {
         );
 
   @override
-  Future<void> onLoad() async {
-    await super.onLoad();
-    destroyedSfx = await AudioPool.createFromAsset(
-        path: 'audio/sfx/destroyed.mp3', maxPlayers: 1);
-  }
-
-  @override
   void beginContact(Object other, Contact contact) {
-<<<<<<<< HEAD:lib/components/word/enemy.dart
     int interceptVelocity =
         (contact.bodyA.linearVelocity - contact.bodyB.linearVelocity)
             .length
             .abs()
             .toInt();
-    if (other is Bird) {
-      destroyedSfx.start();
-      if (interceptVelocity > 35) {
-========
-    if (other is Bird) {
-      int interceptVelocity =
-          (contact.bodyA.linearVelocity - contact.bodyB.linearVelocity)
-              .length
-              .abs()
-              .toInt();
-      if (interceptVelocity > 20) {
-        onContactCallBack!(15000);
->>>>>>>> 07df9ec (add score system & functionality):lib/components/pig.dart
-        removeFromParent();
-      }
+    if (interceptVelocity > 35) {
+      removeFromParent();
     }
+
+    // onContactCallBack!(int interceptVelocity);
+
     super.beginContact(other, contact);
   }
 
