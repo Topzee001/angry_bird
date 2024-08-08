@@ -39,40 +39,14 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-<<<<<<< HEAD
                   Container(
                     width: 500,
                     height: 200,
                     child: Image.asset('assets/images/angry_group.png'),
-                    // decoration: BoxDecoration(
-                    //   image: DecorationImage(
-                    //       image: AssetImage('assets/images/angry_group.png'),
-                    //       fit: BoxFit.fill),
-                    // ),
-=======
-                ),
-                const SizedBox(height: 20),
-                // Play Button
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => GameScreen()),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.amber,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
->>>>>>> efce17fddf4beab9f72a35ff922bc9f22f8c4665
                   ),
-
                   const SizedBox(height: 20),
-                  // Play Button
                   ElevatedButton(
                     onPressed: () {
-                      // Add your onPressed logic here
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(builder: (context) => LevelScreen()
