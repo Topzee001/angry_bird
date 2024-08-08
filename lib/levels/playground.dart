@@ -53,7 +53,7 @@ class Playground extends Forge2DGame {
     scoreDisplay = ScoreDisplay();
     add(scoreDisplay);
 
-    unawaited(addBricks().then((_) => addEnemies()));
+    addStructure();
     await addGround();
   }
 
@@ -69,43 +69,15 @@ class Playground extends Forge2DGame {
     ]);
   }
 
-  final _random = Random();
-
-  Future<void> addBricks() async {
-    for (var i = 0; i < 6; i++) {
-      await world.add(
+  Future<void> addStructure() async {
+    await world.addAll(
+      [
         Wood(
           elements,
-          brickPosition: Vector2(
-              camera.visibleWorldRect.right / 1.6 +
-                  (_random.nextDouble() * 5 - 2.5),
-              0),
+          brickPosition: Vector2(camera.visibleWorldRect.right / 1.6, 0),
+          brickSize:
         ),
-      );
-      await Future<void>.delayed(const Duration(milliseconds: 500));
-    }
-  }
-
-  var enemiesFullyAdded = false;
-
-  Future<void> addEnemies() async {
-    final sprite = await loadSprite('Pig_29.webp');
-    await Future<void>.delayed(const Duration(seconds: 1));
-    for (var i = 0; i < 2; i++) {
-      await world.add(
-        Enemy(
-            position: Vector2(
-                camera.visibleWorldRect.right / 1.6 +
-                    (_random.nextDouble() * 5 - 3.5),
-                (_random.nextDouble() * 3)),
-            sprite: sprite,
-            onContactCallBack: (score) {
-              add(ScoreEffect(score, color: Colors.green));
-              scoreDisplay.addScore(score);
-            }),
-      );
-      await Future<void>.delayed(const Duration(seconds: 1));
-    }
-    enemiesFullyAdded = true;
+      ],
+    );
   }
 }
