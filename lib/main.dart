@@ -1,4 +1,6 @@
+import 'package:angry_bird/levels/playground.dart';
 import 'package:angry_bird/screens/splash_screen.dart';
+import 'package:flame/game.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -25,7 +27,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: const MySplashScreen(),
+      home: GameWidget(game: Playground()),
     );
   }
 }
