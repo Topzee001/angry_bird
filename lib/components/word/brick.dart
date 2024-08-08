@@ -5,10 +5,13 @@ import 'package:angry_bird/components/actors/bird.dart';
 import 'package:angry_bird/components/body_component_with_user_data.dart';
 import 'package:angry_bird/components/word/enemy.dart';
 import 'package:angry_bird/components/word/ground.dart';
+import 'package:angry_bird/components/score_effect.dart';
 import 'package:flame/components.dart';
 import 'package:flame/extensions.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
+
+import 'brick_impact_result.dart';
 
 const brickScale = 0.5;
 
@@ -252,7 +255,7 @@ Map<BrickDamage, String> brickFileNames(BrickType type, BrickSize size) {
 }
 
 class Brick extends BodyComponentWithUserData with ContactCallbacks {
-  void Function(int points)? onContactCallback;
+  void Function(int? points)? onContactCallback;
 
   Brick(
       {required this.type,
@@ -299,19 +302,35 @@ class Brick extends BodyComponentWithUserData with ContactCallbacks {
 
   @override
   void beginContact(Object other, Contact contact) {
+    Vector2 contactPoint;
+    final worldManifold = contact.manifold;
+    if (worldManifold.points.isNotEmpty) {
+      // The first point in the manifold is usually the most accurate collision point
+      contactPoint = worldManifold.points.first.localPoint;
+    } else {
+      // Fallback: use the middle point between the two bodies
+      final bodyA = contact.fixtureA.body;
+      final bodyB = contact.fixtureB.body;
+      contactPoint = (bodyA.position + bodyB.position) / 2;
+    }
+
     if (other is Bird) {
       bricksCollisionSfx.start();
       int interceptVelocity =
+      double interceptVelocity =
           (contact.bodyA.linearVelocity - contact.bodyB.linearVelocity)
               .length
-              .abs()
-              .toInt();
-      print(type);
+              .abs();
+      if (interceptVelocity > 10) {
+        BrickImpactResult impactResult = onBrickImpact(this, interceptVelocity);
+        onContactCallback!(impactResult.pointsAwarded);
 
-      print(interceptVelocity);
-      // if (interceptVelocity > 35) {
-      //   removeFromParent();
-      // }
+        if (!impactResult.isDestroyed) {
+          _damage = impactResult.newDamageState;
+        } else {
+          removeFromParent();
+        }
+      }
     }
     super.beginContact(other, contact);
   }
@@ -329,5 +348,13 @@ class Brick extends BodyComponentWithUserData with ContactCallbacks {
     bricksCollisionSfx = await AudioPool.createFromAsset(
         path: 'audio/sfx/wood_collision.mp3', maxPlayers: 1);
     return super.onLoad();
+  }
+
+  BrickImpactResult onBrickImpact(Brick brick, double impactVelocity) {
+    BrickImpactResult result = calculateImpactResult(impactVelocity, brick);
+
+    brick.damage = result.newDamageState;
+
+    return result;
   }
 }

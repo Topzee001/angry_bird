@@ -35,7 +35,6 @@ class Bird extends BodyComponentWithUserData
 
   @override
   void beginContact(Object other, Contact contact) {
-    debugPrint(other.toString());
     super.beginContact(other, contact);
   }
 
@@ -92,15 +91,15 @@ class Bird extends BodyComponentWithUserData
       _dragStart = event.localPosition;
     }
   }
- @override
-  void onTapDown(TapDownEvent event) {
-    super.onTapDown(event);
-    if (body.bodyType == BodyType.dynamic) {
-      // Apply additional impulse to make the bird move faster
-      final additionalImpulse = Vector2(5, -5); 
-      body.applyLinearImpulse(additionalImpulse);
-    }
-  }
+ // @override
+ //  void onTapDown(TapDownEvent event) {
+ //    super.onTapDown(event);
+ //    if (body.bodyType == BodyType.dynamic) {
+ //      // Apply additional impulse to make the bird move faster
+ //      final additionalImpulse = Vector2(5, -5);
+ //      body.applyLinearImpulse(additionalImpulse);
+ //    }
+ //  }
 
 
   @override
