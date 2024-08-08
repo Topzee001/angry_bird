@@ -1,12 +1,13 @@
 import 'package:flame/components.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
 
+import 'bird.dart';
 import 'body_component_with_user_data.dart';
 
 const enemySize = 5.0;
 
 class Enemy extends BodyComponentWithUserData with ContactCallbacks {
-  Function? onContactCallBack;
+  void Function(int score)? onContactCallBack;
 
   Enemy(
       {required Vector2 position,
@@ -35,17 +36,17 @@ class Enemy extends BodyComponentWithUserData with ContactCallbacks {
 
   @override
   void beginContact(Object other, Contact contact) {
-    int interceptVelocity =
-        (contact.bodyA.linearVelocity - contact.bodyB.linearVelocity)
-            .length
-            .abs()
-            .toInt();
-    if (interceptVelocity > 35) {
-      removeFromParent();
+    if (other is Bird) {
+      int interceptVelocity =
+          (contact.bodyA.linearVelocity - contact.bodyB.linearVelocity)
+              .length
+              .abs()
+              .toInt();
+      if (interceptVelocity > 20) {
+        onContactCallBack!(15000);
+        removeFromParent();
+      }
     }
-
-    // onContactCallBack!(int interceptVelocity);
-
     super.beginContact(other, contact);
   }
 

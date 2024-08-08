@@ -30,7 +30,6 @@ class Bird extends BodyComponentWithUserData
 
   @override
   void beginContact(Object other, Contact contact) {
-    print(other);
     super.beginContact(other, contact);
   }
 
