@@ -55,7 +55,7 @@ FlameAudio.bgm.dispose();
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    // final containerWidth = screenWidth / 3;
+    final containerWidth = screenWidth / 3;
 
     return Scaffold(
       body: Container(
