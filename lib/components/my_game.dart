@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:angry_bird/components/score_display.dart';
 import 'package:angry_bird/components/score_effect.dart';
+import 'package:angry_bird/components/word/enemy.dart';
 import 'package:flame/components.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
@@ -10,8 +11,8 @@ import 'package:flame_kenney_xml/flame_kenney_xml.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'enemy.dart';
 import 'word/brick.dart';
-import 'word/pig.dart';
 import 'word/ground.dart';
 import 'actors/bird.dart';
 
