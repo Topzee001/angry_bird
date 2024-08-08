@@ -11,7 +11,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
   @override
   void initState() {
     super.initState();
@@ -19,12 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
     FlameAudio.bgm.play('birds_intro.mp3');
   }
 
-  @override
-  void dispose() {
-FlameAudio.bgm.stop();
-FlameAudio.bgm.dispose();    
-    super.dispose();
-  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
