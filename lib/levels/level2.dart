@@ -14,11 +14,12 @@ import 'package:flame_kenney_xml/flame_kenney_xml.dart';
 
 import 'package:flutter/material.dart';
 
-import 'word/brick.dart';
-import 'word/ground.dart';
-import 'actors/bird.dart';
+import '../components/actors/bird.dart';
+import '../components/word/brick.dart';
+import '../components/word/ground.dart';
+import 'material.dart';
 
-class AngryBirds extends Forge2DGame with HasGameRef {
+class Level2 extends Forge2DGame with HasGameRef {
   late final XmlSpriteSheet aliens;
   late final XmlSpriteSheet elements;
   late final XmlSpriteSheet tiles;
@@ -26,7 +27,7 @@ class AngryBirds extends Forge2DGame with HasGameRef {
 
   final void Function() popScreen;
 
-  AngryBirds({required this.popScreen}) : super(gravity: Vector2(0, 40.0));
+  Level2({required this.popScreen}) : super(gravity: Vector2(0, 40.0));
 
   late ScoreDisplay scoreDisplay;
 
@@ -99,7 +100,7 @@ class AngryBirds extends Forge2DGame with HasGameRef {
       SpriteComponent(sprite: catapult, size: Vector2.all(10)),
     ], position: Vector2(camera.visibleWorldRect.left * 2 / 4, 0)));
 
-    unawaited(addBricks().then((_) => addEnemies()));
+    await addStructure();
     await addGround();
     await addPlayer();
   }
@@ -123,40 +124,8 @@ class AngryBirds extends Forge2DGame with HasGameRef {
     ]);
   }
 
-  final _random = Random();
-
-  Future<void> addBricks() async {
-    for (var i = 0; i < 6; i++) {
-      final type = BrickType.randomType;
-      final size = BrickSize.randomSize;
-      await world.add(
-        Brick(
-            type: type,
-            size: size,
-            damage: BrickDamage.none,
-            position: Vector2(
-                camera.visibleWorldRect.right / 1.6 +
-                    (_random.nextDouble() * 5 - 2.5),
-                0),
-            sprites: brickFileNames(type, size).map(
-              (key, filename) => MapEntry(
-                key,
-                elements.getSprite(filename),
-              ),
-            ),
-            onContactCallback: (score) {
-              if (score != null) {
-                add(ScoreEffect(score));
-                scoreDisplay.addScore(score);
-              }
-            }),
-      );
-      await Future<void>.delayed(const Duration(milliseconds: 500));
-    }
-  }
-
   Future<void> addPlayer() async {
-    final sprite = await loadSprite('Red.png');
+    final sprite = await loadSprite('blackAng_bird.png');
     return world.add(
       Bird(
         position: Vector2(camera.visibleWorldRect.left * 2 / 5, 0),
@@ -177,7 +146,6 @@ class AngryBirds extends Forge2DGame with HasGameRef {
     }
     if (isMounted) {}
     if (isMounted &&
-        enemiesFullyAdded &&
         world.children.whereType<Enemy>().isEmpty &&
         world.children.whereType<TextComponent>().isEmpty) {
       world.addAll(
@@ -199,26 +167,59 @@ class AngryBirds extends Forge2DGame with HasGameRef {
     }
   }
 
-  var enemiesFullyAdded = false;
-
-  Future<void> addEnemies() async {
+  Future<void> addStructure() async {
     final sprite = await loadSprite('Pig_29.webp');
-    await Future<void>.delayed(const Duration(seconds: 1));
-    for (var i = 0; i < 2; i++) {
-      await world.add(
-        Enemy(
-            position: Vector2(
-                camera.visibleWorldRect.right / 1.6 +
-                    (_random.nextDouble() * 5 - 3.5),
-                (_random.nextDouble() * 3)),
-            sprite: sprite,
-            onContactCallBack: (score) {
-              add(ScoreEffect(score, color: Colors.green));
-              scoreDisplay.addScore(score);
-            }),
-      );
-      await Future<void>.delayed(const Duration(seconds: 1));
-    }
-    enemiesFullyAdded = true;
+    await world.addAll(
+      [
+        Stone(elements,
+            brickPosition: Vector2(camera.visibleWorldRect.right / 1.2, 10),
+            brickSize: BrickSize.size70x220, onHit: (score) {
+          if (score != null) {
+            add(ScoreEffect(score));
+            scoreDisplay.addScore(score);
+          }
+        }),
+        Stone(elements,
+            brickPosition: Vector2(camera.visibleWorldRect.right / 1.6, 10),
+            brickSize: BrickSize.size70x140, onHit: (score) {
+          if (score != null) {
+            add(ScoreEffect(score));
+            scoreDisplay.addScore(score);
+          }
+        }),
+        Stone(elements,
+            brickPosition: Vector2(camera.visibleWorldRect.right / 2.4, 10),
+            brickSize: BrickSize.size70x70, onHit: (score) {
+          if (score != null) {
+            add(ScoreEffect(score));
+            scoreDisplay.addScore(score);
+          }
+        }),
+      ],
+    );
+
+    await world.addAll([
+      Enemy(
+          position: Vector2(camera.visibleWorldRect.right / 1.2, 5),
+          sprite: sprite,
+          onContactCallBack: (score) {
+            add(ScoreEffect(score, color: Colors.green));
+            scoreDisplay.addScore(score);
+          }),
+      Enemy(
+          position: Vector2(camera.visibleWorldRect.right / 1.6, 5),
+          sprite: sprite,
+          onContactCallBack: (score) {
+            add(ScoreEffect(score, color: Colors.green));
+            scoreDisplay.addScore(score);
+          }),
+      Enemy(
+          position: Vector2(camera.visibleWorldRect.right / 2.4, 5),
+          sprite: sprite,
+          onContactCallBack: (score) {
+            add(ScoreEffect(score, color: Colors.green));
+            scoreDisplay.addScore(score);
+          }),
+    ]);
   }
 }

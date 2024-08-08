@@ -68,8 +68,8 @@ class _LevelScreenState extends State<LevelScreen> {
                       context,
                       MaterialPageRoute(
                         builder: (context) => GameScreen(
-                            //level: index + 1, bird: birds[index]
-                            ),
+                          screen: index,
+                        ),
                         // transitionDuration: Duration.zero,
                       ),
                     );
