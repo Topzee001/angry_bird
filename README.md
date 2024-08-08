@@ -43,7 +43,7 @@ Kindly click [here](https://docs.google.com/document/u/0/d/1qiGsEeg4PW8Zi6ZddScM
 
 ## Solution
 
-Quick Menu is a restaurant  menu mobile app that transform the dinning experience by using NFC technology to provide customers with instant access to restaurants menus. By placing NFC tags on individual tables, users can simply tap their smartphones on the tag to view detailed and up-to-date menu information. This app enhances convenience, improves accuracy and offers a modern solution for both customers and restaurants admin.
+Angry Bird is a 2D  mobile game inspired by "Angry Birds," where players launch characters to destroy structures and defeat enemies. The game is engaging, visually appealing, and provide a fun and challenging experience for players.
 
 ### Screenshot
 
@@ -60,9 +60,15 @@ Quick Menu is a restaurant  menu mobile app that transform the dinning experienc
 
 ## Features
 
-- Digital Menu Access: Instantly view the resturant's menu by tapping your phone on an NFC tag placed on the table.
-- Splash Screen: An initial loading screen with the app logo that navigates to the home screen after a delay.
-- Easy Menu Updates: Restaurants admin can add menu items, prices and categories with ease. It allows restaurant's staff to write menu details on the NFC tags via the app.
+- Gameplay Mechanics:
+  - Launch Mechanism: Characters can be dragged and launched at obstacles and enemiesic.
+  - The game simulates realistic movement and interactions.
+  - Destructible Structures: The game include woods and bricks that can be destroyed by the launched characters.
+  - Enemies: The game include enemies within the structures that players must defeat to progress.
+- Levels and Progression:
+  - Level Design: The game include multiple levels with increasing difficulty.
+  - Scoring System: Players can earn scores by destroying characters and obstacles.
+  <!-- - Unlockable Content: Provide new characters, abilities, and levels as rewards for progression. -->
 
 ## The process
 
@@ -72,18 +78,18 @@ Quick Menu is a restaurant  menu mobile app that transform the dinning experienc
 
 ### Lesson learnt
 
-Developing the Quick Menu app provided several valuable insights and lessons, both technical and non-technical, these lessons are summarized in the following bullet point:
+Developing the Angry Bird mobile game app provided several valuable insights and lessons, both technical and non-technical, these lessons are summarized in the following bullet point:
 
 - The value of team work and collaboration.
 Developers were paired in a team of five to work together to bring this project idea to live.
-- Understanding NFC Technology
-Integrating the NFC technology required a deep understanding of NFC and handling data transfer.
-- State Management
-Implementing state management with the Bloc package in Flutter was essential for maintaining and updating the app's state efficiently. This pattern helped in separating the business logic from the UI, making the code more maintainable and scalable.
+- Understanding game engine of flutter
+The development provided insight to flutter game engine using flame and forge2D.
+<!-- - State Management
+Implementing state management with the Bloc package in Flutter was essential for maintaining and updating the app's state efficiently. This pattern helped in separating the business logic from the UI, making the code more maintainable and scalable. -->
 - Effective UI/UX Design
 Creating a user-friendly interface involved using various Flutter widgets to provide a smooth and responsive experience. The pull-to-refresh feature and shimmer loading effect were particularly effective in improving the user experience by providing visual feedback during data loading.
-- MVVM Architecture
-Adopting the MVVM architecture pattern was a significant step in organizing the codebase. This architecture facilitated a clear separation of concerns, making the app easier to manage and extend.
+<!-- - MVVM Architecture
+Adopting the MVVM architecture pattern was a significant step in organizing the codebase. This architecture facilitated a clear separation of concerns, making the app easier to manage and extend. -->
 
 ## Installation
 
@@ -166,13 +172,13 @@ Code Structure:
 
 Download the latest version of the app from the link below:
 
-[Download APK](https://drive.google.com/file/d/1JdwPI53pwyiyPIhmv7DT2o7JCPvVxI7w/view?usp=drive_link)
+[Download APK](https://)
 or
 Download [here](gitfiles/angry_bird.apk)
 
 ## Live Demo Link
 
-Try Quick Menu Demo: [Google drive](https://drive.google.com/file/d/1Ex1-lrMT_AOyKaNm544rLn8R7SOD-Rhe/view)
+Try the game: [Appetize Link](https://)
 
 ## Authors
 
@@ -195,11 +201,6 @@ Try Quick Menu Demo: [Google drive](https://drive.google.com/file/d/1Ex1-lrMT_AO
 
 - Linkedin - [@ogbonnaijeoma](https://www.linkedin.com/in/ijeoma-emmanuella-913050242/)
 - Email - [ogbonnaijeoma871@gmail.com](ogbonnaijeoma871@gmail.com)
-
-#### Obor Spicy
-
-- Linkedin - [@israelmenyaga](https://www.linkedin.com/in/israelmenyaga?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app)
-- Email - [dev.izzy.code@gmail.com](dev.izzy.code@gmail.com)
 
 ## Contributing
 
