@@ -48,8 +48,8 @@ class LevelScreen extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) => GameScreen(
-                            //level: index + 1, bird: birds[index]
-                            ),
+                          screen: index,
+                        ),
                         // transitionDuration: Duration.zero,
                       ),
                     );
