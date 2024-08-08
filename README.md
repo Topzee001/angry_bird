@@ -52,10 +52,10 @@ Angry Bird is a 2D  mobile game inspired by "Angry Birds," where players launch 
 ![Playing game](/gitfiles/screenshot5.png)
 ![Playing game](/gitfiles/screenshot6.png)
 ![Playing game](/gitfiles/screenshot7.png)
-<!-- ![alt text](/gitfiles/screenshot8.png)
+![alt text](/gitfiles/screenshot8.png)
 ![alt text](/gitfiles/screenshot9.png)
 ![alt text](/gitfiles/screenshot11.png)
-![alt text](/gitfiles/screenshot10.png) -->
+![alt text](/gitfiles/screenshot10.png)
 
 ## Features
 
