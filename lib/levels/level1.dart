@@ -8,6 +8,7 @@ import 'package:angry_bird/components/score_effect.dart';
 import 'package:angry_bird/components/word/enemy.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
+import 'package:flame/input.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
 import 'package:flame_kenney_xml/flame_kenney_xml.dart';
@@ -26,8 +27,14 @@ class Level1 extends Forge2DGame with HasGameRef {
   late final RouterComponent router;
 
   final void Function() popScreen;
+  final void Function() nextLevel;
+  final void Function() restartLevel;
 
-  Level1({required this.popScreen}) : super(gravity: Vector2(0, 40.0));
+  Level1({
+    required this.popScreen,
+    required this.nextLevel,
+    required this.restartLevel,
+  }) : super(gravity: Vector2(0, 40.0));
 
   late ScoreDisplay scoreDisplay;
 
@@ -84,7 +91,7 @@ class Level1 extends Forge2DGame with HasGameRef {
             },
             centerPosition: gameRef.size / 2,
             restartPressed: () {
-              pauseWhenBackgrounded = true;
+              restartLevel();
               removeFromParent();
             },
             exitPressed: () {
@@ -164,6 +171,24 @@ class Level1 extends Forge2DGame with HasGameRef {
           ),
         ),
       );
+      world.add(ButtonComponent(
+          button: TextComponent(
+            text: 'Next Level',
+            textRenderer: TextPaint(
+              style: const TextStyle(color: Colors.white, fontSize: 4),
+            ),
+          ),
+          onPressed: () {
+            nextLevel();
+          },
+          anchor: Anchor.center,
+          position: Vector2(0, 14),
+          children: [
+            RectangleComponent(
+                paint: Paint()..color = Colors.orangeAccent,
+                size: Vector2(24, 6),
+                position: Vector2(-2, 0)),
+          ]));
     }
   }
 

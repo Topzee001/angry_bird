@@ -50,7 +50,6 @@ class LevelScreen extends StatelessWidget {
                         builder: (context) => GameScreen(
                           screen: index,
                         ),
-                        // transitionDuration: Duration.zero,
                       ),
                     );
                   },

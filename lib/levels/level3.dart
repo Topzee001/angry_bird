@@ -8,6 +8,7 @@ import 'package:angry_bird/components/score_effect.dart';
 import 'package:angry_bird/components/word/enemy.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
+import 'package:flame/input.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
 import 'package:flame_kenney_xml/flame_kenney_xml.dart';
@@ -26,9 +27,14 @@ class Level3 extends Forge2DGame with HasGameRef {
   late final RouterComponent router;
 
   final void Function() popScreen;
+  final void Function() nextLevel;
+  final void Function() restartLevel;
 
-  Level3({required this.popScreen}) : super(gravity: Vector2(0, 40.0));
-
+  Level3({
+    required this.popScreen,
+    required this.nextLevel,
+    required this.restartLevel,
+  }) : super(gravity: Vector2(0, 40.0));
   late ScoreDisplay scoreDisplay;
 
   @override
@@ -84,7 +90,7 @@ class Level3 extends Forge2DGame with HasGameRef {
             },
             centerPosition: gameRef.size / 2,
             restartPressed: () {
-              pauseWhenBackgrounded = true;
+              restartLevel();
               removeFromParent();
             },
             exitPressed: () {
@@ -125,7 +131,7 @@ class Level3 extends Forge2DGame with HasGameRef {
   }
 
   Future<void> addPlayer() async {
-    final sprite = await loadSprite('blackAng_bird.png');
+    final sprite = await loadSprite('yellow_bird.png');
     return world.add(
       Bird(
         position: Vector2(camera.visibleWorldRect.left * 2 / 5, 0),
@@ -164,22 +170,39 @@ class Level3 extends Forge2DGame with HasGameRef {
           ),
         ),
       );
+      world.add(ButtonComponent(
+          button: TextComponent(
+            text: 'Next Level',
+            textRenderer: TextPaint(
+              style: const TextStyle(color: Colors.white, fontSize: 4),
+            ),
+          ),
+          onPressed: () {
+            nextLevel();
+          },
+          anchor: Anchor.center,
+          position: Vector2(0, 14),
+          children: [
+            RectangleComponent(
+                paint: Paint()..color = Colors.orangeAccent,
+                size: Vector2(24, 6),
+                position: Vector2(-2, 0)),
+          ]));
     }
   }
 
   Future<void> addStructure() async {
-    final sprite = await loadSprite('Pig_29.webp');
     await world.addAll(
       [
-        Stone(elements,
+        Metal(elements,
             brickPosition: Vector2(camera.visibleWorldRect.right / 1.2, 10),
-            brickSize: BrickSize.size70x220, onHit: (score) {
+            brickSize: BrickSize.size70x140, onHit: (score) {
           if (score != null) {
             add(ScoreEffect(score));
             scoreDisplay.addScore(score);
           }
         }),
-        Stone(elements,
+        Metal(elements,
             brickPosition: Vector2(camera.visibleWorldRect.right / 1.6, 10),
             brickSize: BrickSize.size70x140, onHit: (score) {
           if (score != null) {
@@ -187,9 +210,57 @@ class Level3 extends Forge2DGame with HasGameRef {
             scoreDisplay.addScore(score);
           }
         }),
-        Stone(elements,
+        Metal(elements,
             brickPosition: Vector2(camera.visibleWorldRect.right / 2.4, 10),
-            brickSize: BrickSize.size70x70, onHit: (score) {
+            brickSize: BrickSize.size70x140, onHit: (score) {
+          if (score != null) {
+            add(ScoreEffect(score));
+            scoreDisplay.addScore(score);
+          }
+        }),
+        Wood(elements,
+            brickPosition: Vector2(camera.visibleWorldRect.right / 2.4 + 5, 0),
+            brickSize: BrickSize.size220x70, onHit: (score) {
+          if (score != null) {
+            add(ScoreEffect(score));
+            scoreDisplay.addScore(score);
+          }
+        }),
+        Wood(elements,
+            brickPosition: Vector2(camera.visibleWorldRect.right / 1.2 - 6, 0),
+            brickSize: BrickSize.size220x70, onHit: (score) {
+          if (score != null) {
+            add(ScoreEffect(score));
+            scoreDisplay.addScore(score);
+          }
+        }),
+        Stone(elements,
+            brickPosition: Vector2(camera.visibleWorldRect.right / 1.4 - 1, -1),
+            brickSize: BrickSize.size70x140, onHit: (score) {
+          if (score != null) {
+            add(ScoreEffect(score));
+            scoreDisplay.addScore(score);
+          }
+        }),
+        Stone(elements,
+            brickPosition: Vector2(camera.visibleWorldRect.right / 2.0 + 1, -1),
+            brickSize: BrickSize.size70x140, onHit: (score) {
+          if (score != null) {
+            add(ScoreEffect(score));
+            scoreDisplay.addScore(score);
+          }
+        }),
+        Explosives(elements,
+            brickPosition: Vector2(camera.visibleWorldRect.right / 1.6 - 1, -8),
+            brickSize: BrickSize.size220x70, onHit: (score) {
+          if (score != null) {
+            add(ScoreEffect(score));
+            scoreDisplay.addScore(score);
+          }
+        }),
+        Glass(elements,
+            brickPosition: Vector2(camera.visibleWorldRect.right / 1.6 - 1, -8),
+            brickSize: BrickSize.size140x70, onHit: (score) {
           if (score != null) {
             add(ScoreEffect(score));
             scoreDisplay.addScore(score);
@@ -198,23 +269,25 @@ class Level3 extends Forge2DGame with HasGameRef {
       ],
     );
 
+    // await Future<void>.delayed(const Duration(milliseconds: 2000));
+    final sprite = await loadSprite('Pig_29.webp');
     await world.addAll([
       Enemy(
-          position: Vector2(camera.visibleWorldRect.right / 1.2, 5),
+          position: Vector2(camera.visibleWorldRect.right / 1.4, 5),
           sprite: sprite,
           onContactCallBack: (score) {
             add(ScoreEffect(score, color: Colors.green));
             scoreDisplay.addScore(score);
           }),
       Enemy(
-          position: Vector2(camera.visibleWorldRect.right / 1.6, 5),
+          position: Vector2(camera.visibleWorldRect.right / 2, 5),
           sprite: sprite,
           onContactCallBack: (score) {
             add(ScoreEffect(score, color: Colors.green));
             scoreDisplay.addScore(score);
           }),
       Enemy(
-          position: Vector2(camera.visibleWorldRect.right / 2.4, 5),
+          position: Vector2(camera.visibleWorldRect.right / 1.6, -3),
           sprite: sprite,
           onContactCallBack: (score) {
             add(ScoreEffect(score, color: Colors.green));
