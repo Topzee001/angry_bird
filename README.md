@@ -169,6 +169,10 @@ Try the game: [Appetize Link](https://appetize.io/app/b_evcbl2n3j26dj2poz44pd3h2
 
 ## Authors
 
+### View Linear Ticket
+
+Click [here](https://linear.app/telexapp/team/MOB2/all) to view linear tickets
+
 ### Uma Godwin
 
 - Linkedin - [@godwinekeuma](https://www.linkedin.com/in/godwinekeuma)
