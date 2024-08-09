@@ -1,5 +1,6 @@
 import 'package:angry_bird/levels/level1.dart';
 import 'package:flame/game.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flame_forge2d/forge2d_game.dart';
 import 'package:flutter/material.dart';
 
@@ -14,6 +15,7 @@ class GameScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    FlameAudio.bgm.pause();
     List<Forge2DGame> screens = [
       Level1(
         popScreen: () {

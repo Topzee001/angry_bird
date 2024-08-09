@@ -32,7 +32,7 @@ class _MySplashScreenState extends State<MySplashScreen> {
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/images/splashscreen.png'),
-            fit: BoxFit.cover,
+            fit: BoxFit.fill,
           ),
         ),
       ),
