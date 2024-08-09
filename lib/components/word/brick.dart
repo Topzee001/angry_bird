@@ -9,7 +9,7 @@ import 'package:flame/extensions.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
 
-import '../brick_impact_result.dart';
+import 'brick_impact_result.dart';
 
 
 const brickScale = 0.5;
@@ -340,7 +340,7 @@ class Brick extends BodyComponentWithUserData with ContactCallbacks {
 
   @override
   void beginContact(Object other, Contact contact) {
-    Vector2 contactPoint;
+   Vector2 contactPoint;
     final worldManifold = contact.manifold;
     if (worldManifold.points.isNotEmpty) {
       // The first point in the manifold is usually the most accurate collision point

@@ -1,10 +1,30 @@
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 
 import 'game_screen.dart';
 import 'home_screen.dart';
 
-class LevelScreen extends StatelessWidget {
+class LevelScreen extends StatefulWidget {
   const LevelScreen({super.key});
+
+  @override
+  State<LevelScreen> createState() => _LevelScreenState();
+}
+
+class _LevelScreenState extends State<LevelScreen> {
+  //   @override
+  // void initState() {
+  //   super.initState();
+  //   FlameAudio.bgm.initialize();
+  //   FlameAudio.bgm.play('birds_intro.mp3');
+  // }
+
+  @override
+  void dispose() {
+    FlameAudio.bgm.stop();
+    FlameAudio.bgm.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +41,8 @@ class LevelScreen extends StatelessWidget {
       'assets/images/home_background.png',
       'assets/images/background.webp',
     ];
-    return WillPopScope(
-      onWillPop: () async => false,
+    return PopScope(
+      canPop:  false,
       child: Scaffold(
         body: Container(
           decoration: const BoxDecoration(
@@ -101,7 +121,7 @@ class LevelScreen extends StatelessWidget {
             onPressed: () {
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => HomeScreen()),
+                MaterialPageRoute(builder: (context) => const HomeScreen()),
               );
             },
             backgroundColor: Colors.amber.shade900,
