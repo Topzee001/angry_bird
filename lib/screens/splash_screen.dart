@@ -22,7 +22,7 @@ class _MySplashScreenState extends State<MySplashScreen> {
       );
     });
     FlameAudio.bgm.initialize();
-    FlameAudio.bgm.play('birds_intro.mp3');
+    FlameAudio.bgm.play('birds_intro.mp3', volume: 0.4);
   }
 
   @override

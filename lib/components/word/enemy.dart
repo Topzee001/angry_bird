@@ -40,7 +40,7 @@ class Enemy extends BodyComponentWithUserData with ContactCallbacks {
   Future<void> onLoad() async {
     await super.onLoad();
     destroyedSfx = await AudioPool.createFromAsset(
-        path: 'audio/sfx/destroyed.mp3', maxPlayers: 1);
+        path: 'audio/sfx/bird_collision.mp3', maxPlayers: 1);
   }
 
   @override
@@ -51,8 +51,8 @@ class Enemy extends BodyComponentWithUserData with ContactCallbacks {
             .abs()
             .toInt();
     if (other is Bird) {
-      destroyedSfx.start();
       if (interceptVelocity > 10) {
+        destroyedSfx.start();
         onContactCallBack!(15000);
         removeFromParent();
       }

@@ -79,8 +79,6 @@ class Bird extends BodyComponentWithUserData
   @override
   void onDragStart(DragStartEvent event) {
     launchSfx.start(volume: 0.8);
-    Future.delayed(
-        const Duration(milliseconds: 1000), () => flyingSfx.start(volume: 0.8));
 
     super.onDragStart(event);
     if (body.bodyType == BodyType.static) {
@@ -118,6 +116,7 @@ class Bird extends BodyComponentWithUserData
     if (body.bodyType == BodyType.static) {
       bool cancel = _dragDelta.r * _dragDelta.g >= -0.05 &&
           _dragDelta.r * _dragDelta.g <= 0.05;
+      flyingSfx.start();
 
       if (!cancel) {
         children
