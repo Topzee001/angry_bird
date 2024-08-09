@@ -40,9 +40,6 @@ class Level1 extends Forge2DGame with HasGameRef {
   @override
   FutureOr<void> onLoad() async {
     await super.onLoad();
-
-    FlameAudio.bgm.initialize();
-    FlameAudio.bgm.play('birds_intro.mp3', volume: 0.4);
     final spriteSheets = await Future.wait([
       XmlSpriteSheet.load(
         imagePath: 'spritesheet_aliens.png',

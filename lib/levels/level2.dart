@@ -40,8 +40,6 @@ class Level2 extends Forge2DGame with HasGameRef {
   FutureOr<void> onLoad() async {
     await super.onLoad();
 
-    FlameAudio.bgm.initialize();
-    FlameAudio.bgm.play('birds_intro.mp3');
     final spriteSheets = await Future.wait([
       XmlSpriteSheet.load(
         imagePath: 'spritesheet_aliens.png',
@@ -68,7 +66,7 @@ class Level2 extends Forge2DGame with HasGameRef {
     Sprite catapult = await loadSprite("catapult.png");
 
     add(SpriteComponent()
-      ..sprite = await loadSprite('bgdbird1.jpg')//todo:
+      ..sprite = await loadSprite('bgdbird1.jpg') //todo:
       ..size = size);
     scoreDisplay = ScoreDisplay();
     add(scoreDisplay);
@@ -130,7 +128,7 @@ class Level2 extends Forge2DGame with HasGameRef {
   }
 
   Future<void> addPlayer() async {
-    final sprite = await loadSprite('blackAng_bird.png');//todo
+    final sprite = await loadSprite('blackAng_bird.png'); //todo
     return world.add(
       Bird(
         position: Vector2(camera.visibleWorldRect.left * 2 / 5, 0),
@@ -191,7 +189,7 @@ class Level2 extends Forge2DGame with HasGameRef {
   }
 
   Future<void> addStructure() async {
-    final sprite = await loadSprite('Pig_29.webp');//todo:
+    final sprite = await loadSprite('Pig_29.webp'); //todo:
     await world.addAll(
       [
         Stone(elements,

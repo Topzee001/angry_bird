@@ -15,8 +15,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    FlameAudio.bgm.initialize();
-    FlameAudio.bgm.play('birds_intro.mp3');
   }
 
   @override

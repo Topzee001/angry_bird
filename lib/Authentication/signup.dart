@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 
 import '../components/utils/my_button.dart';
 
-
-
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
 
@@ -58,13 +56,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
           );
         });
   }
- @override
+
+  @override
   void initState() {
     super.initState();
-    FlameAudio.bgm.initialize();
-    FlameAudio.bgm.play('birds_intro.mp3');
   }
-
 
   @override
   Widget build(BuildContext context) {

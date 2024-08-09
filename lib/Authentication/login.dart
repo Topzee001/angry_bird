@@ -40,17 +40,14 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void initState() {
     super.initState();
-    FlameAudio.bgm.initialize();
-    FlameAudio.bgm.play('birds_intro.mp3');
   }
 
 //   @override
 //   void dispose() {
 // // FlameAudio.bgm.stop();
-// FlameAudio.bgm.dispose();    
+// FlameAudio.bgm.dispose();
 //     super.dispose();
 //   }
-
 
   @override
   Widget build(BuildContext context) {
