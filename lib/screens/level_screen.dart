@@ -13,9 +13,13 @@ class LevelScreen extends StatefulWidget {
 
 class _LevelScreenState extends State<LevelScreen> {
   @override
-  Widget build(BuildContext context) {
-    !FlameAudio.bgm.isPlaying ? FlameAudio.bgm.resume() : null;
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
 
+  @override
+  Widget build(BuildContext context) {
     final List<String> birds = [
       'assets/images/angry_bird.png',
       'assets/images/blackAng_bird.png',

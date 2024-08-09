@@ -19,6 +19,8 @@ class GameScreen extends StatelessWidget {
     List<Forge2DGame> screens = [
       Level1(
         popScreen: () {
+          FlameAudio.bgm.resume();
+
           Navigator.pop(context);
         },
         nextLevel: () {
@@ -48,6 +50,8 @@ class GameScreen extends StatelessWidget {
       ),
       Level2(
         popScreen: () {
+          FlameAudio.bgm.resume();
+
           Navigator.pop(context);
         },
         nextLevel: () {
@@ -77,6 +81,8 @@ class GameScreen extends StatelessWidget {
       ),
       Level3(
         popScreen: () {
+          FlameAudio.bgm.resume();
+
           Navigator.pop(context);
         },
         nextLevel: () {
@@ -106,6 +112,8 @@ class GameScreen extends StatelessWidget {
       ),
       Level4(
         popScreen: () {
+          FlameAudio.bgm.resume();
+          
           Navigator.pop(context);
         },
         nextLevel: () {
