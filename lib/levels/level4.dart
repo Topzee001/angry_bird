@@ -68,7 +68,7 @@ class Level4 extends Forge2DGame with HasGameRef {
     Sprite catapult = await loadSprite("catapult.png");
 
     add(SpriteComponent()
-      ..sprite = await loadSprite('background.png')
+      ..sprite = await loadSprite('background.webp')
       ..size = size);
     scoreDisplay = ScoreDisplay();
     add(scoreDisplay);
@@ -103,7 +103,7 @@ class Level4 extends Forge2DGame with HasGameRef {
 
     world.add(PositionComponent(children: [
       SpriteComponent(sprite: catapult, size: Vector2.all(10)),
-    ], position: Vector2(camera.visibleWorldRect.left * 2 / 4, 0)));
+    ], position: Vector2(camera.visibleWorldRect.left * 2 / 4, 6)));
 
     await addStructure();
     await addGround();
@@ -133,7 +133,7 @@ class Level4 extends Forge2DGame with HasGameRef {
     final sprite = await loadSprite('blueAng_bird.png');
     return world.add(
       Bird(
-        position: Vector2(camera.visibleWorldRect.left * 2 / 5, 0),
+        position: Vector2(camera.visibleWorldRect.left * 2 / 5, 6),
         sprite: sprite,
       ),
     );
