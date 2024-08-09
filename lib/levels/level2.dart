@@ -68,7 +68,7 @@ class Level2 extends Forge2DGame with HasGameRef {
     Sprite catapult = await loadSprite("catapult.png");
 
     add(SpriteComponent()
-      ..sprite = await loadSprite('bgdbird1.jpg')
+      ..sprite = await loadSprite('bgdbird1.jpg')//todo:
       ..size = size);
     scoreDisplay = ScoreDisplay();
     add(scoreDisplay);
@@ -110,12 +110,12 @@ class Level2 extends Forge2DGame with HasGameRef {
     await addPlayer();
   }
 
-  @override
-  void onRemove() {
-    FlameAudio.bgm.stop();
-    FlameAudio.bgm.dispose();
-    super.onRemove();
-  }
+  // @override
+  // void onRemove() {
+  //   FlameAudio.bgm.stop();
+  //   FlameAudio.bgm.dispose();
+  //   super.onRemove();
+  // }
 
   Future<void> addGround() {
     return world.addAll([
@@ -130,7 +130,7 @@ class Level2 extends Forge2DGame with HasGameRef {
   }
 
   Future<void> addPlayer() async {
-    final sprite = await loadSprite('blackAng_bird.png');
+    final sprite = await loadSprite('blackAng_bird.png');//todo
     return world.add(
       Bird(
         position: Vector2(camera.visibleWorldRect.left * 2 / 5, 0),
@@ -191,7 +191,7 @@ class Level2 extends Forge2DGame with HasGameRef {
   }
 
   Future<void> addStructure() async {
-    final sprite = await loadSprite('Pig_29.webp');
+    final sprite = await loadSprite('Pig_29.webp');//todo:
     await world.addAll(
       [
         Stone(elements,

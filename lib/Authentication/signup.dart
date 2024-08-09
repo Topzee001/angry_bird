@@ -65,12 +65,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     FlameAudio.bgm.play('birds_intro.mp3');
   }
 
-  @override
-  void dispose() {
-FlameAudio.bgm.stop();
-FlameAudio.bgm.dispose();    
-    super.dispose();
-  }
+
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;

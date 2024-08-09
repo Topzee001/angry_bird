@@ -1,6 +1,7 @@
 import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 
+import '../Authentication/profile.dart';
 import 'level_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -17,7 +18,6 @@ class _HomeScreenState extends State<HomeScreen> {
     FlameAudio.bgm.initialize();
     FlameAudio.bgm.play('birds_intro.mp3');
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -110,11 +110,14 @@ class _HomeScreenState extends State<HomeScreen> {
               child: ElevatedButton(
                 onPressed: () {
                   // Add your onPressed logic here
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const UserProfile(),
+                  ));
                 },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.amber.shade900,
                     shape: const CircleBorder()),
-                child: const Icon(Icons.leaderboard, color: Colors.white),
+                child: const Icon(Icons.person, color: Colors.white),
               ),
             ),
           ],

@@ -44,12 +44,12 @@ class _LoginScreenState extends State<LoginScreen> {
     FlameAudio.bgm.play('birds_intro.mp3');
   }
 
-  @override
-  void dispose() {
-FlameAudio.bgm.stop();
-FlameAudio.bgm.dispose();    
-    super.dispose();
-  }
+//   @override
+//   void dispose() {
+// // FlameAudio.bgm.stop();
+// FlameAudio.bgm.dispose();    
+//     super.dispose();
+//   }
 
 
   @override

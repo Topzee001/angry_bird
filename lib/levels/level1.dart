@@ -42,7 +42,7 @@ class Level1 extends Forge2DGame with HasGameRef {
     await super.onLoad();
 
     FlameAudio.bgm.initialize();
-    FlameAudio.bgm.play('birds_intro.mp3');
+    FlameAudio.bgm.play('birds_intro.mp3', volume: 0.4);
     final spriteSheets = await Future.wait([
       XmlSpriteSheet.load(
         imagePath: 'spritesheet_aliens.png',
@@ -111,12 +111,12 @@ class Level1 extends Forge2DGame with HasGameRef {
     await addPlayer();
   }
 
-  @override
-  void onRemove() {
-    FlameAudio.bgm.stop();
-    FlameAudio.bgm.dispose();
-    super.onRemove();
-  }
+  // @override
+  // void onRemove() {
+  //   FlameAudio.bgm.stop();
+  //   FlameAudio.bgm.dispose();
+  //   super.onRemove();
+  // }
 
   Future<void> addGround() {
     return world.addAll([

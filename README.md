@@ -173,25 +173,25 @@ Try the game: [Appetize Link](https://appetize.io/app/b_evcbl2n3j26dj2poz44pd3h2
 
 Click [here](https://linear.app/telexapp/team/MOB2/all) to view linear tickets
 
-### Uma Godwin
+- ### Uma Godwin
 
-- Linkedin - [@godwinekeuma](https://www.linkedin.com/in/godwinekeuma)
-- Email - [godwinekeuma@gmail.com](godwinekeuma@gmail.com)
+  - Linkedin - [@godwinekeuma](https://www.linkedin.com/in/godwinekeuma)
+  - Email - [godwinekeuma@gmail.com](godwinekeuma@gmail.com)
 
-#### Iyamu Wisdom
+- #### Iyamu Wisdom
 
-- Linkedin - [@wisdomiyamu](https://www.linkedin.com/in/lukasio)
-- Email - [wisdomiyamu@gmail.com](wisdomiyamu@gmail.com)
+  - Linkedin - [@wisdomiyamu](https://www.linkedin.com/in/lukasio)
+  - Email - [wisdomiyamu@gmail.com](wisdomiyamu@gmail.com)
 
-#### Sakariyah Ibrahim Temitope  
+- #### Sakariyah Ibrahim Temitope  
 
-- Linkedin - [@ibrahim-sakariyah](https://www.linkedin.com/in/ibrahim-sakariyah-071380183?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)
-- Email - [ibrahimsakariyah@gmail.com](ibrahimsakariyah@gmail.com)
+  - Linkedin - [@ibrahim-sakariyah](https://www.linkedin.com/in/ibrahim-sakariyah-071380183?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)
+  - Email - [ibrahimsakariyah@gmail.com](ibrahimsakariyah@gmail.com)
 
-#### Ijeoma Ogbonna
+- #### Ijeoma Ogbonna
 
-- Linkedin - [@ogbonnaijeoma](https://www.linkedin.com/in/ijeoma-emmanuella-913050242/)
-- Email - [ogbonnaijeoma871@gmail.com](ogbonnaijeoma871@gmail.com)
+  - Linkedin - [@ogbonnaijeoma](https://www.linkedin.com/in/ijeoma-emmanuella-913050242/)
+  - Email - [ogbonnaijeoma871@gmail.com](ogbonnaijeoma871@gmail.com)
 
 ## Contributing
 

@@ -7,18 +7,32 @@ class UserProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: SafeArea(
+        body: Container(
+          decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('assets/images/background.jpg'),
+                  fit: BoxFit.fill)),
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 //icon and player info
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Icon(Icons.circle, size: 32.0, color: Colors.orange),
-                    Text(
+                    Container(
+                        decoration: const BoxDecoration(
+                            shape: BoxShape.circle, color: Colors.deepOrange),
+                        child: IconButton(
+                          icon: const Icon(
+                            Icons.arrow_back,
+                            size: 32.0,
+                            color: Colors.white,
+                          ),
+                          onPressed: () => Navigator.pop(context),
+                        )),
+                    const Text(
                       'Player Info',
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
@@ -39,7 +53,7 @@ class UserProfile extends StatelessWidget {
                       children: [
                         const CircleAvatar(
                           radius: 40,
-                          backgroundImage: AssetImage(''),
+                          child: Icon(Icons.person),
                         ),
                         const SizedBox(height: 10.0),
                         Wrap(
@@ -66,7 +80,6 @@ class UserProfile extends StatelessWidget {
                 ),
                 const SizedBox(height: 20.0),
 
-                //  with a progress bar
                 const Text(
                   'Level: 3/20',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -90,7 +103,6 @@ class UserProfile extends StatelessWidget {
                   spacing: 10.0,
                   children: List.generate(
                     3,
-                    //number of badges
                     (index) => const Icon(Icons.emoji_events,
                         color: Colors.amber, size: 40.0),
                   ),
